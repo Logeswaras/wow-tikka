@@ -3,10 +3,19 @@ import OrderOnline from "./components/OrderOnline";
 import Card from "../../common/ui/Card";
 import axios from "axios";
 
+import NavBar from "../../common/components/layout/NavBar";
+import SearchBar from "../../common/components/layout/SearchBar";
+
 const index = () => {
   axios.get("");
   return (
     <div className="mb-5">
+      <div>
+        <NavBar />
+      </div>
+      <div>
+        <SearchBar />
+      </div>
       <div>
         <Banner />
       </div>
@@ -22,7 +31,7 @@ const index = () => {
             </div>
             <div className="col-md-4">
               <Card image="item-2" title="sauces" />
-            </div>{" "}
+            </div>
             <div className="col-md-4">
               <Card image="item-3" title="sauces" />
             </div>
@@ -31,7 +40,7 @@ const index = () => {
             </div>
             <div className="col-md-4">
               <Card image="item-5" title="sauces" />
-            </div>{" "}
+            </div>
             <div className="col-md-4">
               <Card image="item-6" title="sauces" />
             </div>
