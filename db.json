@@ -1,0 +1,31 @@
+{
+  "posts": [{ "id": 1, "title": "json-server", "author": "typicode" }],
+  "comments": [{ "id": 1, "body": "some comment", "postId": 1 }],
+  "profile": { "name": "typicode" },
+  "products": [
+    {
+      "image": "./src/assets/Home/item-1.svg",
+      "title": "Rice Bowls"
+    },
+    {
+      "image": "./src/assets/Home/item-2.svg",
+      "title": "Wheat wraps"
+    },
+    {
+      "image": "./src/assets/Home/item-3.svg",
+      "title": "Salad Bowl"
+    },
+    {
+      "image": "./src/assets/Home/item-4.svg",
+      "title": "Sauces"
+    },
+    {
+      "image": "./src/assets/Home/item-5.svg",
+      "title": "Sides"
+    },
+    {
+      "image": "./src/assets/Home/item-6.svg",
+      "title": "Beverages"
+    }
+  ]
+}
