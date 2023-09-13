@@ -1,3 +1,5 @@
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
 import BaseButton from "../controls/BaseButton";
 import BaseInput from "../controls/BaseInput";
 
@@ -8,9 +10,11 @@ const SearchBar = () => {
         name="search"
         type="text"
         placeholder="Please select your location"
-        size="col-md-3"
+        size="col-md-4"
+        inputIcon={faLocationDot}
       />
-      <BaseButton defaultClass="ms-4 btn btn-success" name="Search" />
+
+      <BaseButton defaultClass="ms-4 col-md-1 btn-success" name="Search" />
     </div>
   );
 };

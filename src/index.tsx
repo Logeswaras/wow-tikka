@@ -10,6 +10,8 @@ import "./index.css";
 //components
 import App from "./App";
 
+import "./styles/main.scss";
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

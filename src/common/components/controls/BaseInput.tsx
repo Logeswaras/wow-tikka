@@ -1,4 +1,7 @@
 import React from "react";
+import Form from "react-bootstrap/Form";
+
+import BaseIcon from "../ui/BaseIcon";
 
 // import BaseErrors from "../ui/BaseErrors";
 
@@ -44,15 +47,17 @@ const BaseInput: React.FC<TextInputProps> = ({
   return (
     <>
       <div className={`${size}`}>
-        {label && <label className={`form-label ${labelClass}`}>{label}</label>}
-        <div className={`form-group ${inputIcon && "has-search"}`}>
+        {label && <Form.Label className={`form-label ${labelClass}`}>{label}</Form.Label>}
+        
+        {/* {label && <label className={`form-label ${labelClass}`}>{label}</label>} */}
+        <div className={`form-group  ${inputIcon && "icon"}`}>
           {inputIcon ? (
             <span className="form-control-feedback">
-              {/* <BaseIcon icon={inputIcon} classes={iconClass} /> */}
+              <BaseIcon icon={inputIcon} classes={iconClass} />
             </span>
           ) : null}
 
-          <input
+          {/* <input
             type={type}
             value={value}
             name={name}
@@ -63,7 +68,21 @@ const BaseInput: React.FC<TextInputProps> = ({
             className={`form-control ${inputClass} ${inputBgColor}`}
             onChange={handleChange}
             onBlur={handleBlur}
-          ></input>
+          ></input> */}
+          <Form.Control
+            type={type}
+            value={value}
+            name={name}
+            placeholder={placeholder}
+            readOnly={readOnly}
+            minLength={minLength}
+            maxLength={maxLength}
+            className={`form-control ${inputClass} ${inputBgColor}`}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
           {/* {formik && <BaseErrors name={name} formik={formik}></BaseErrors>} */}
         </div>
       </div>

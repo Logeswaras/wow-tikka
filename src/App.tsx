@@ -6,6 +6,8 @@ import routes from "./providers/routes";
 //react component
 import { Suspense } from "react";
 
+
+
 function App() {
   let route = useRoutes(routes);
   return (

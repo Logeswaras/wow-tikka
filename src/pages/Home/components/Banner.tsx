@@ -17,7 +17,8 @@ const Banner = () => {
           <div className="d-flex justify-content-center mt-4">
             <BaseButton
               types="button"
-              defaultClass="btn btn-outline-light border  border-light border-2 px-4"
+              defaultClass="px-4"
+              variant="outline-light"
               name="Order Online"
             />
           </div>

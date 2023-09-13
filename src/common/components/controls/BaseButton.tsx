@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "react-bootstrap/Button";
 
 interface IProps {
   id?: string;
@@ -7,19 +8,21 @@ interface IProps {
   defaultClass: string;
   handleClick?: any;
   handleSubmit?: any;
+  variant?: any;
 }
 
-const Button: React.FC<IProps> = ({
+const button: React.FC<IProps> = ({
   id,
   name,
   types,
   defaultClass,
   handleClick,
   handleSubmit,
+  variant,
 }) => {
   return (
     <>
-      <button
+      {/* <button
         id={id}
         type={types}
         className={`rounded-1 ${defaultClass}`}
@@ -27,9 +30,19 @@ const Button: React.FC<IProps> = ({
         onSubmit={handleSubmit}
       >
         {name && name}
-      </button>
+      </button> */}
+      <Button
+        id={id}
+        type={types}
+        variant={variant}
+        className={`rounded-1 ${defaultClass}`}
+        onClick={handleClick}
+        onSubmit={handleSubmit}
+      >
+        {name && name}
+      </Button>
     </>
   );
 };
 
-export default Button;
+export default button;
