@@ -27,7 +27,7 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="row px-5">
+    <div className="row px-5 g-0">
       <div className="col-md-2">
         <img
           src={require(`../../../assets/Home/${logo}.svg`)}

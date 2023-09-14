@@ -1,0 +1,19 @@
+.background-image {
+  background-image: url("../../../assets/Home/bannerBgVector.svg");
+  background-repeat: no-repeat, repeat;
+  background-attachment: scroll;
+  background-position: top bottom;
+  background-size: cover;
+}
+
+//
+@media only screen and (max-width: 500px) {
+  .banner-img {
+    margin-top: 40px;
+    transform: rotate(20deg);
+    width: 300px;
+  }
+  .background-image {
+    background-position: center;
+  }
+}

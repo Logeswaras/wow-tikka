@@ -1,20 +1,26 @@
+//custom components
 import BaseButton from "../../../common/components/controls/BaseButton";
+
+//react-bootstrap components
+import Image from "react-bootstrap/Image";
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 const Banner = () => {
   const banner = "banner-img";
   return (
     <>
-      <div className="background-image">
-        <div className="">
-          <div className="d-flex justify-content-center">
-            <img
+      <Container className="background-image" fluid>
+        <Row className="justify-content-center">
+          <Col md={8} lg={8} xl={11} xxl={12} className="text-center mt-4">
+            <Image
               src={require(`../../../assets/Home/${banner}.svg`)}
-              alt="banner"
-              className="mt-5"
-              height={300}
+              fluid
+              className="banner-img"
             />
-          </div>
-          <div className="d-flex justify-content-center mt-4">
+          </Col>
+          <div className="d-flex justify-content-center my-4">
             <BaseButton
               types="button"
               defaultClass="px-4"
@@ -22,8 +28,8 @@ const Banner = () => {
               name="Order Online"
             />
           </div>
-        </div>
-      </div>
+        </Row>
+      </Container>
     </>
   );
 };
