@@ -26,22 +26,22 @@ const index = () => {
 
         <div className="mt-5">
           <div className="row">
-            <div className="col-md-4">
+            <div className="col-md-4 col-xxl-3">
               <Card image="item-1" title="sauces" />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-xxl-3">
               <Card image="item-2" title="sauces" />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-xxl-3">
               <Card image="item-3" title="sauces" />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-xxl-3">
               <Card image="item-4" title="sauces" />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-xxl-3">
               <Card image="item-5" title="sauces" />
             </div>
-            <div className="col-md-4">
+            <div className="col-md-4 col-xxl-3">
               <Card image="item-6" title="sauces" />
             </div>
           </div>

@@ -11,14 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-/* after replace code scss */
-
-.background-image {
-  background-image: url("./assets//Home/bannerBgVector.svg");
-  background-repeat: no-repeat, repeat;
-  background-attachment: scroll;
-  background-position: bottom;
-  background-size: 100%;
-  min-height: 450px;
-}
