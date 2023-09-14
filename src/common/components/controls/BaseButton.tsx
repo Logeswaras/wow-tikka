@@ -31,7 +31,7 @@ const button: React.FC<IProps> = ({
       >
         {name && name}
       </button> */}
-      <Button
+      <Button 
         id={id}
         type={types}
         variant={variant}

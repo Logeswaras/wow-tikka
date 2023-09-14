@@ -1,0 +1,20 @@
+@media (max-width: 768px) {
+  .search-input {
+    margin: 30px 0 20px 0;
+  }
+
+  .search-button {
+    display: flex;
+    justify-content: center;
+  }
+
+  .btn-success {
+    width: 50%;
+  }
+}
+
+@media (min-width: 769px) {
+  .btn-success {
+    width: 150px;
+  }
+}

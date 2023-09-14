@@ -1,4 +1,8 @@
 import { NavLink } from "react-router-dom";
+import { Col, Container, Nav, Navbar, Row, Image } from "react-bootstrap";
+
+import BaseIcon from "../ui/BaseIcon";
+import { faBars } from "../../icons/Icons";
 
 const NavBar = () => {
   const logo = "logo";
@@ -27,31 +31,37 @@ const NavBar = () => {
   ];
 
   return (
-    <div className="row px-5">
-      <div className="col-md-2">
-        <img
-          src={require(`../../../assets/Home/${logo}.svg`)}
-          alt="item-1"
-          className="p-2"
-          width={200}
-          height={200}
-        />
-      </div>
-      <div className="col-md d-flex justify-content-center">
-        <nav className="navbar navbar-expand-lg">
-          <div className="navbar-nav">
-            {links.map((link, index) => (
-              <NavLink
-                to={link.path}
-                key={index}
-                className="nav-link dashboard-nav mx-3"
-              >
-                {link.name}
-              </NavLink>
-            ))}
-          </div>
-        </nav>
-      </div>
+    <div className="px-3">
+      <Row>
+        <Col md="2" sm="6">
+          <Image
+            src={require(`../../../assets/Home/${logo}.svg`)}
+            fluid
+            className="logo"
+          />
+        </Col>
+
+        <Col md={10} sm={6} className="nav-icon">
+          <Navbar expand="lg">
+            <Navbar.Toggle aria-controls="basic-navbar-nav" >
+              <BaseIcon icon={faBars} />
+            </Navbar.Toggle>
+            <Navbar.Collapse>
+              <Nav className="ms-auto">
+                {links.map((link, index) => (
+                  <Nav.Link
+                    href={link.path}
+                    key={index}
+                    className="nav-link dashboard-nav mx-3 pt-5"
+                  >
+                    {link.name}
+                  </Nav.Link>
+                ))}
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
+        </Col>
+      </Row>
     </div>
   );
 };

@@ -1,3 +1,31 @@
 .nav-link {
-    color: #5A1410 !important;
+  color: #5a1410 !important;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    width: 25%;
+    height: auto;
+    margin-top: 20px;
+  }
+
+  .nav-icon {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -50px;
+  }
+}
+
+@media (min-width: 769px) {
+  .logo {
+    margin-top: 25px;
+  }
+
+  .nav-icon {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: -5px;
+  }
 }
