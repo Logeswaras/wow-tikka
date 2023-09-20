@@ -4,27 +4,27 @@
   "profile": { "name": "typicode" },
   "products": [
     {
-      "image": "./src/assets/Home/item-1.svg",
+      "image": "item-1",
       "title": "Rice Bowls"
     },
     {
-      "image": "./src/assets/Home/item-2.svg",
+      "image": "item-2",
       "title": "Wheat wraps"
     },
     {
-      "image": "./src/assets/Home/item-3.svg",
+      "image": "item-3",
       "title": "Salad Bowl"
     },
     {
-      "image": "./src/assets/Home/item-4.svg",
+      "image": "item-4",
       "title": "Sauces"
     },
     {
-      "image": "./src/assets/Home/item-5.svg",
+      "image": "item-5",
       "title": "Sides"
     },
     {
-      "image": "./src/assets/Home/item-6.svg",
+      "image": "item-6",
       "title": "Beverages"
     }
   ]

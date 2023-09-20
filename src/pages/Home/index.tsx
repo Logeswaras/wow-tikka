@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Banner from "./components/Banner";
 import OrderOnline from "./components/OrderOnline";
 import Card from "../../common/ui/Card";
@@ -5,45 +6,42 @@ import axios from "axios";
 
 import NavBar from "../../common/components/layout/NavBar";
 import SearchBar from "../../common/components/layout/SearchBar";
+interface ProductData {
+  image: string;
+  title: string;
+}
 
-const index = () => {
-  axios.get("");
+const Home = () => {
+  const [cardData, setCardData] = useState<Array<ProductData>>([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:9000/products")
+      .then((res) => setCardData(res.data))
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
   return (
     <div className="mb-5">
-      <div>
-        <NavBar />
-      </div>
-      <div>
-        <SearchBar />
-      </div>
+      <NavBar />
+      <SearchBar />
       <div>
         <Banner />
       </div>
       <div className="px-5">
-        <div>
-          <OrderOnline />
-        </div>
-
+        <OrderOnline />
+      </div>
+      <div className="px-5">
         <div className="mt-5">
           <div className="row">
-            <div className="col-md-4 col-xxl-3">
-              <Card image="item-1" title="sauces" />
-            </div>
-            <div className="col-md-4 col-xxl-3">
-              <Card image="item-2" title="sauces" />
-            </div>
-            <div className="col-md-4 col-xxl-3">
-              <Card image="item-3" title="sauces" />
-            </div>
-            <div className="col-md-4 col-xxl-3">
-              <Card image="item-4" title="sauces" />
-            </div>
-            <div className="col-md-4 col-xxl-3">
-              <Card image="item-5" title="sauces" />
-            </div>
-            <div className="col-md-4 col-xxl-3">
-              <Card image="item-6" title="sauces" />
-            </div>
+            {cardData &&
+              cardData.map((card, i) => (
+                <div
+                  className="col-12 col-xl-4 col-lg-4 col-md-6 col-sm-6"
+                  key={i}
+                >
+                  <Card image={card.image} title={card.title} />
+                </div>
+              ))}
           </div>
         </div>
       </div>
@@ -51,4 +49,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Home;

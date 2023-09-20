@@ -5,8 +5,13 @@
   background-position: top bottom;
   background-size: cover;
 }
+.mobile-chip {
+  display: none;
+}
+.tablet-chip {
+  display: block;
+}
 
-//
 @media only screen and (max-width: 500px) {
   .banner-img {
     margin-top: 40px;
@@ -15,5 +20,18 @@
   }
   .background-image {
     background-position: center;
+  }
+  .card-img {
+    width: 100%;
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 1rem;
+  }
+  .mobile-chip {
+    display: block;
+  }
+  .tablet-chip {
+    display: none;
   }
 }

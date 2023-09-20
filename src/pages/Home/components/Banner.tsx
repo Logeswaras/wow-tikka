@@ -20,7 +20,7 @@ const Banner = () => {
               className="banner-img"
             />
           </Col>
-          <div className="d-flex justify-content-center my-4">
+          <div className="text-center my-4">
             <BaseButton
               types="button"
               defaultClass="px-4"

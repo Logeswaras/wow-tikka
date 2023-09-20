@@ -1,4 +1,3 @@
-
 interface IProps {
   image?: string;
   title?: string;
@@ -17,13 +16,13 @@ const Card: React.FC<IProps> = ({
 }) => {
   return (
     <>
-      <div className="bg-light rounded-4">
+      <div className="bg-light rounded-4" onClick={() => {}}>
         <div className="">
           <div className="text-center">
             <img
               src={require(`../../assets/Home/${image}.svg`)}
               alt="item-1"
-              className="p-2"
+              className="p-2 card-img"
               height={200}
             />
             <h4 className="pb-4 my-3">{title}</h4>

@@ -1,12 +1,53 @@
 import { NavLink } from "react-router-dom";
 
 //react-bootstrap components
-import Row from "react-bootstrap/Row";
+import Carousel from "react-bootstrap/Carousel";
 
 const OrderOnline = () => {
+  const chips = [
+    {
+      name: "Build your own",
+      path: "/",
+    },
+    {
+      name: "Street food",
+      path: "/",
+    },
+    {
+      name: "Sides",
+      path: "/",
+    },
+    {
+      name: "Desserts",
+      path: "/",
+    },
+  ];
+  console.log(window.screen.width > 320);
   return (
     <>
-      <div className="mt-4">
+      <div className="mt-5 mobile-chip">
+        <h4>Order Online</h4>
+        <Carousel
+          indicators={false}
+          data-bs-theme="dark"
+          interval={null}
+          className="mt-4 w-100"
+        >
+          {chips.map((chip, i) => (
+            <Carousel.Item>
+              <div className="text-center" key={i}>
+                <NavLink
+                  to={chip.path}
+                  className="nav-link border rounded-3 d-inline-block px-3"
+                >
+                  {chip.name}
+                </NavLink>
+              </div>
+            </Carousel.Item>
+          ))}
+        </Carousel>
+      </div>
+      <div className="mt-4 tablet-chip">
         <h4>Order Online</h4>
         <div className="mt-3">
           <NavLink
