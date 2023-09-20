@@ -13,6 +13,13 @@
   }
 }
 
+@media (min-width: 501px) and (max-width: 768px) {
+  .btn-success {
+    width: 150px;
+    margin-top: 30px;
+  }
+}
+
 @media (min-width: 769px) {
   .btn-success {
     width: 150px;
