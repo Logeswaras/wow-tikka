@@ -1,0 +1,10 @@
+.stickyHeader {
+    background-color: #F9F2ED;
+    height: 40px;
+}
+
+@media (max-width: 500px) {
+ .stickyHeader {
+    display: none;
+ }
+}
