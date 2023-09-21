@@ -27,5 +27,32 @@
       "image": "item-6",
       "title": "Beverages"
     }
+  ],
+  "cart": [
+    {
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
+      "title": "Rice Bowls",
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
+      "title": "Rice Bowls",
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
+    },
+    {
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
+      "title": "Rice Bowls",
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
+    },
+    {
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTstnwhn6hKOh_1_PX3bivFAghX-QKxV4bTxwvfft2AtD7cvVjFg42z-cDMHkixWzslfUQ&usqp=CAU",
+      "title": "Rice Bowls",
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
+    },
+    {
+      "image": "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?cs=srgb&dl=pexels-ella-olsson-1640772.jpg&fm=jpg",
+      "title": "Rice Bowls",
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
+    }
   ]
 }

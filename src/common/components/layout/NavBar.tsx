@@ -32,36 +32,27 @@ const NavBar = () => {
 
   return (
     <div className="px-3">
-      <Row>
-        <Col md="2" sm="6">
-          <Image
-            src={require(`../../../assets/Home/${logo}.svg`)}
-            fluid
-            className="logo"
-          />
-        </Col>
-
-        <Col md={10} sm={6} className="nav-icon">
-          <Navbar expand="lg">
-            <Navbar.Toggle aria-controls="basic-navbar-nav" >
-              <BaseIcon icon={faBars} />
-            </Navbar.Toggle>
-            <Navbar.Collapse>
-              <Nav className="ms-auto">
-                {links.map((link, index) => (
-                  <Nav.Link
-                    href={link.path}
-                    key={index}
-                    className="nav-link dashboard-nav mx-3 pt-5"
-                  >
-                    {link.name}
-                  </Nav.Link>
-                ))}
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
-        </Col>
-      </Row>
+      <Navbar collapseOnSelect expand="lg" className="">
+        <Container>
+          <Col md="2" sm="6" className="logo">
+            <Image src={require(`../../../assets/Home/${logo}.svg`)} fluid />
+          </Col>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="m-auto">
+              {links.map((link, index) => (
+                <NavLink
+                  to={link.path}
+                  key={index}
+                  className="nav-link mx-3 pt-2"
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 };

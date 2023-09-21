@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row, Table } from "react-bootstrap";
 import BaseButton from "../../common/components/controls/BaseButton";
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import BaseInput from "../../common/components/controls/BaseInput";
+import axios from "axios";
+
+interface ProductData {
+  image: string;
+  title: string;
+  ingredients: Array<string>;
+}
 
 const Cart = () => {
+  const [cartData, setCartData] = useState<Array<ProductData>>([]);
+
+  const getProducts = async () => {
+    await axios
+      .get("http://localhost:9000/cart")
+      .then((res) => setCartData(res.data))
+      .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
   return (
     <>
       <Row className="px-5 mt-3">
@@ -18,271 +37,59 @@ const Cart = () => {
               </tr>
             </thead>
             <tbody>
-              <tr className="align-middle">
-                <td>
-                  <div className="d-flex align-items-center">
-                    <img
-                      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-                      alt="img"
-                      className="rounded-2"
-                      width={80}
-                    />
-                    <div className="ms-5">
-                      <h5>Rice bowls</h5>
-                      <div className="">
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Rice
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Corn
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Onion
-                        </span>
-                        <span className="bg-light border rounded-3 px-3">
-                          Chicken balls
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className="d-flex">
-                    <div className="d-flex align-items-center border rounded-1">
-                      <div>
-                        <BaseButton
-                          icon={faMinus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
+              {cartData &&
+                cartData.map((item, i) => (
+                  <tr className="align-middle" key={i}>
+                    <td>
+                      <div className="d-flex align-items-center">
+                        <img
+                          src={item.image}
+                          alt="img"
+                          className="rounded-2"
+                          width={60}
+                          height={60}
                         />
+                        <div className="ms-5">
+                          <h5>{item.title}</h5>
+                          <div className="">
+                            {item.ingredients.map((chips, i) => (
+                              <span
+                                className="bg-light border rounded-3 px-3 me-2"
+                                key={i}
+                              >
+                                {chips}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
-                      <div className="bg-warning text-white py-1 px-2 rounded-1">
-                        0
+                    </td>
+                    <td>
+                      <div className="d-flex">
+                        <div className="d-flex align-items-center border rounded-1">
+                          <div>
+                            <BaseButton
+                              icon={faMinus}
+                              types="button"
+                              defaultClass="btn btn-light ps-2"
+                            />
+                          </div>
+                          <div className="bg-warning text-white py-1 px-2 rounded-1">
+                            0
+                          </div>
+                          <div>
+                            <BaseButton
+                              icon={faPlus}
+                              types="button"
+                              defaultClass="btn btn-light ps-2"
+                            />
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <BaseButton
-                          icon={faPlus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="fw-semibold">$45.00</td>
-              </tr>
-              <tr className="align-middle">
-                <td>
-                  <div className="d-flex align-items-center">
-                    <img
-                      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-                      alt="img"
-                      className="rounded-2"
-                      width={80}
-                    />
-                    <div className="ms-5">
-                      <h5>Rice bowls</h5>
-                      <div className="">
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Rice
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Corn
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Onion
-                        </span>
-                        <span className="bg-light border rounded-3 px-3">
-                          Chicken balls
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className="d-flex">
-                    <div className="d-flex align-items-center border rounded-1">
-                      <div>
-                        <BaseButton
-                          icon={faMinus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                      <div className="bg-warning text-white py-1 px-2 rounded-1">
-                        0
-                      </div>
-                      <div>
-                        <BaseButton
-                          icon={faPlus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="fw-semibold">$45.00</td>
-              </tr>
-              <tr className="align-middle">
-                <td>
-                  <div className="d-flex align-items-center">
-                    <img
-                      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-                      alt="img"
-                      className="rounded-2"
-                      width={80}
-                    />
-                    <div className="ms-5">
-                      <h5>Rice bowls</h5>
-                      <div className="">
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Rice
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Corn
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Onion
-                        </span>
-                        <span className="bg-light border rounded-3 px-3">
-                          Chicken balls
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className="d-flex">
-                    <div className="d-flex align-items-center border rounded-1">
-                      <div>
-                        <BaseButton
-                          icon={faMinus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                      <div className="bg-warning text-white py-1 px-2 rounded-1">
-                        0
-                      </div>
-                      <div>
-                        <BaseButton
-                          icon={faPlus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="fw-semibold">$45.00</td>
-              </tr>
-              <tr className="align-middle">
-                <td>
-                  <div className="d-flex align-items-center">
-                    <img
-                      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-                      alt="img"
-                      className="rounded-2"
-                      width={80}
-                    />
-                    <div className="ms-5">
-                      <h5>Rice bowls</h5>
-                      <div className="">
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Rice
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Corn
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Onion
-                        </span>
-                        <span className="bg-light border rounded-3 px-3">
-                          Chicken balls
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className="d-flex">
-                    <div className="d-flex align-items-center border rounded-1">
-                      <div>
-                        <BaseButton
-                          icon={faMinus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                      <div className="bg-warning text-white py-1 px-2 rounded-1">
-                        0
-                      </div>
-                      <div>
-                        <BaseButton
-                          icon={faPlus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="fw-semibold">$45.00</td>
-              </tr>
-              <tr className="align-middle">
-                <td>
-                  <div className="d-flex align-items-center">
-                    <img
-                      src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-                      alt="img"
-                      className="rounded-2"
-                      width={80}
-                    />
-                    <div className="ms-5">
-                      <h5>Rice bowls</h5>
-                      <div className="">
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Rice
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Corn
-                        </span>
-                        <span className="bg-light border rounded-3 px-3 me-2">
-                          Onion
-                        </span>
-                        <span className="bg-light border rounded-3 px-3">
-                          Chicken balls
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td>
-                  <div className="d-flex">
-                    <div className="d-flex align-items-center border rounded-1">
-                      <div>
-                        <BaseButton
-                          icon={faMinus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                      <div className="bg-warning text-white py-1 px-2 rounded-1">
-                        0
-                      </div>
-                      <div>
-                        <BaseButton
-                          icon={faPlus}
-                          types="button"
-                          defaultClass="btn btn-light ps-2"
-                        />
-                      </div>
-                    </div>
-                  </div>
-                </td>
-                <td className="fw-semibold">$45.00</td>
-              </tr>
+                    </td>
+                    <td className="fw-semibold">$45.00</td>
+                  </tr>
+                ))}
             </tbody>
           </Table>
         </Col>
