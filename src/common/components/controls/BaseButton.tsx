@@ -1,5 +1,6 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import BaseIcon from "../ui/BaseIcon";
 
 interface IProps {
   id?: string;
@@ -9,6 +10,7 @@ interface IProps {
   handleClick?: any;
   handleSubmit?: any;
   variant?: any;
+  icon?: any;
 }
 
 const button: React.FC<IProps> = ({
@@ -19,19 +21,11 @@ const button: React.FC<IProps> = ({
   handleClick,
   handleSubmit,
   variant,
+  icon,
 }) => {
   return (
     <>
-      {/* <button
-        id={id}
-        type={types}
-        className={`rounded-1 ${defaultClass}`}
-        onClick={handleClick}
-        onSubmit={handleSubmit}
-      >
-        {name && name}
-      </button> */}
-      <Button 
+      <Button
         id={id}
         type={types}
         variant={variant}
@@ -39,7 +33,7 @@ const button: React.FC<IProps> = ({
         onClick={handleClick}
         onSubmit={handleSubmit}
       >
-        {name && name}
+        {name && name} {icon && <BaseIcon icon={icon} />}
       </Button>
     </>
   );

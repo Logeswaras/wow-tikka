@@ -4,7 +4,6 @@ import OrderOnline from "./components/OrderOnline";
 import Card from "../../common/ui/Card";
 import axios from "axios";
 
-import NavBar from "../../common/components/layout/NavBar";
 import SearchBar from "../../common/components/layout/SearchBar";
 interface ProductData {
   image: string;
@@ -22,7 +21,6 @@ const Home = () => {
   }, []);
   return (
     <div className="mb-5">
-      <NavBar />
       <SearchBar />
       <div>
         <Banner />
