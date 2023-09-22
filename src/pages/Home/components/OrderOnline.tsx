@@ -7,7 +7,7 @@ const OrderOnline = () => {
   const chips = [
     {
       name: "Build your own",
-      path: "/",
+      path: "/menu-description/bowl",
     },
     {
       name: "Street food",
@@ -51,7 +51,7 @@ const OrderOnline = () => {
         <h4>Order Online</h4>
         <div className="mt-3">
           <NavLink
-            to={"/"}
+            to={"/menu-description/bowl"}
             className="nav-link border rounded-3 d-inline-block px-3 me-md-0 me-2"
           >
             Build your own

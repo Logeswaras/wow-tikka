@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <>
       <div>
-        <SearchBar />
+        {/* <SearchBar /> */}
         <Banner />
       </div>
       <div className="px-5">
