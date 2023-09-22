@@ -5,51 +5,18 @@
 
 @media (max-width: 500px) {
   .logo {
-    width: 25%;
-    height: auto;
-    margin-top: 20px;
-  }
-
-  .nav-icon {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: -50px;
-  }
-
-  .dashboard-nav {
-    margin: -28px 0;
-    display: flex;
-    justify-content: flex-end;
+    width: 50%;
+    img {
+      width: 100px;
+    }
   }
 }
 
 @media (min-width: 501px) and (max-width: 768px) {
-  .nav-icon {
-    margin-top: 10px;
-    display: flex;
-    justify-content: flex-end;
-  }
-
   .logo {
-    margin-top: 10px;
-  }
-
-  .dashboard-nav {
-    margin: -25px 0;
-    display: flex;
-    justify-content: flex-end;
-  }
-}
-
-@media (min-width: 769px) {
-  .logo {
-    margin-top: 25px;
-  }
-
-  .nav-icon {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: -5px;
+    width: 30%;
+    img {
+      width: 150px;
+    }
   }
 }

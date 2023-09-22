@@ -14,11 +14,15 @@ interface ProductData {
 const Home = () => {
   const [cardData, setCardData] = useState<Array<ProductData>>([]);
 
-  useEffect(() => {
-    axios
+  const getProducts = async () => {
+    await axios
       .get("http://localhost:9000/products")
       .then((res) => setCardData(res.data))
       .catch((error) => console.error("Error fetching data:", error));
+  };
+
+  useEffect(() => {
+    getProducts();
   }, []);
   return (
     <>
@@ -35,7 +39,7 @@ const Home = () => {
             {cardData &&
               cardData.map((card, i) => (
                 <div
-                  className="col-12 col-xl-4 col-lg-4 col-md-6 col-sm-6"
+                  className="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3"
                   key={i}
                 >
                   <Card image={card.image} title={card.title} />
