@@ -1,3 +1,8 @@
 export {
-  faLocationDot,faCartShopping,faBars,
+  faLocationDot,
+  faCartShopping,
+  faBars,
+  faTruck,
+  faCheck,
+  faTruckPickup
 } from "@fortawesome/free-solid-svg-icons";

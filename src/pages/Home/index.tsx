@@ -3,7 +3,7 @@ import axios from "axios";
 
 import Banner from "./components/Banner";
 import OrderOnline from "./components/OrderOnline";
-import Card from "../../common/ui/Card";
+import Card from "../../common/ui/BaseCard";
 import SearchBar from "../../common/components/layout/SearchBar";
 
 interface ProductData {
@@ -11,7 +11,7 @@ interface ProductData {
   title: string;
 }
 
-const Home = () => {
+const Home: React.FC = () => {
   const [cardData, setCardData] = useState<Array<ProductData>>([]);
 
   const getProducts = async () => {
