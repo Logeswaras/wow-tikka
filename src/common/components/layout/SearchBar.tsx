@@ -1,13 +1,13 @@
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { Col, Container, Row } from "react-bootstrap";
 
 import BaseButton from "../controls/BaseButton";
 import BaseInput from "../controls/BaseInput";
-import { Col, Container, Row } from "react-bootstrap";
 
 const SearchBar = () => {
   return (
     <Container className="d-flex justify-content-center">
-      <Row noGutters>
+      <Row>
         <Col md={10} sm={12}>
           <div className="search-input">
             <BaseInput

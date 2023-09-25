@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Banner from "./components/Banner";
 import OrderOnline from "./components/OrderOnline";
 import Card from "../../common/ui/BaseCard";
-import SearchBar from "../../common/components/layout/SearchBar";
 
 interface ProductData {
   image: string;
@@ -13,6 +13,7 @@ interface ProductData {
 
 const Home: React.FC = () => {
   const [cardData, setCardData] = useState<Array<ProductData>>([]);
+  const navigate = useNavigate();
 
   const getProducts = async () => {
     await axios
@@ -24,10 +25,14 @@ const Home: React.FC = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
+  const handleMenuPage = (name: string) => {
+    navigate(`/menu-description/${name}`);
+  };
+
   return (
     <>
       <div>
-        {/* <SearchBar /> */}
         <Banner />
       </div>
       <div className="px-5">
@@ -37,15 +42,16 @@ const Home: React.FC = () => {
         <div className="mt-5">
           <div className="row">
             {cardData &&
-              cardData.map((card, i) => (
+              cardData.map((card, index) => (
                 <div
                   className="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3"
-                  key={i}
+                  key={index}
                 >
                   <Card
                     image={card.image}
                     title={card.title}
-                    handleClick={() => console.log(card.title)}
+                    handleClick={() => handleMenuPage(card.title)}
+                    defaultClass="bg-light border-0 rounded-4"
                   />
                 </div>
               ))}

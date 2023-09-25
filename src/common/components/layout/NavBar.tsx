@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { Col, Container, Nav, Navbar, Image } from "react-bootstrap";
 
 import BaseIcon from "../ui/BaseIcon";
-import { faBagShopping, faBars } from "../../icons/Icons";
+import { faBagShopping } from "../../icons/Icons";
 
 const NavBar = () => {
   const logo = "logo";
