@@ -27,7 +27,6 @@ const Home: React.FC = () => {
   return (
     <>
       <div>
-        {/* <SearchBar /> */}
         <Banner />
       </div>
       <div className="px-5">

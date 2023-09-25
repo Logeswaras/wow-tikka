@@ -1,4 +1,4 @@
-import { Badge, Button, Card, Col, Row } from "react-bootstrap";
+import { Badge, Card, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import BaseButton from "../../common/components/controls/BaseButton";
 
@@ -11,11 +11,11 @@ const MenuDescription = () => {
 
   return (
     <>
-      <h4 className="d-sm-none title">Rice Bowls</h4>
+      <h4 className="d-sm-none text-capitalize title">{menu}</h4>
       <Card className="card">
         <Card.Body>
           <Row>
-            <Col md={4}>
+            <Col md={4} className="custom-image">
               <Card.Img
                 src={require(`../../assets/Home/Menu/${menuImage}.svg`)}
               />
@@ -24,7 +24,7 @@ const MenuDescription = () => {
               <div className="vertical-line"></div>
             </Col>
             <Col md={7} className="my-3">
-              <Card.Title>Rice Bowls</Card.Title>
+              <Card.Title className="text-capitalize">{menu}</Card.Title>
               <Card.Text>
                 Indian salad bowl? Wow! It’s actually amazing and it actually
                 works. Relish your salad with Indian Flavour’s and tell everyone
@@ -57,7 +57,7 @@ const MenuDescription = () => {
       </Card>
       <Row className="menu-details">
         <Col md={{ span: 4, offset: 2 }}>
-          <h5>Rice bowls</h5>
+          <h5 className="text-capitalize">{menu}</h5>
           <p>Ricebase with carrot mid & onion toppings</p>
         </Col>
         <Col md={{ span: 4, offset: 2 }}>
