@@ -1,5 +1,6 @@
 import { Badge, Button, Card, Col, Row } from "react-bootstrap";
 import { useParams } from "react-router-dom";
+import BaseButton from "../../common/components/controls/BaseButton";
 
 const MenuDescription = () => {
   const { menu } = useParams();
@@ -10,7 +11,8 @@ const MenuDescription = () => {
 
   return (
     <>
-      <Card className="ms-5 mt-5 mb-3" style={{ width: "83%" }}>
+      <h4 className="d-sm-none title">Rice Bowls</h4>
+      <Card className="card">
         <Card.Body>
           <Row>
             <Col md={4}>
@@ -19,7 +21,7 @@ const MenuDescription = () => {
               />
             </Col>
             <Col md={1}>
-                <div className="vertical-line"></div>
+              <div className="vertical-line"></div>
             </Col>
             <Col md={7} className="my-3">
               <Card.Title>Rice Bowls</Card.Title>
@@ -37,9 +39,10 @@ const MenuDescription = () => {
                   <h6>150cal</h6>
                 </Col>
                 <Col>
-                  <Button variant="warning" className="text-white">
-                    Customize
-                  </Button>
+                  <BaseButton
+                    defaultClass="customize-button border-0"
+                    name="Customize"
+                  />
                 </Col>
               </Row>
               <h6 className="mt-3">Customised</h6>
@@ -52,7 +55,7 @@ const MenuDescription = () => {
           </Row>
         </Card.Body>
       </Card>
-      <Row className="pb-1 pt-3 menu-details">
+      <Row className="menu-details">
         <Col md={{ span: 4, offset: 2 }}>
           <h5>Rice bowls</h5>
           <p>Ricebase with carrot mid & onion toppings</p>
@@ -60,9 +63,11 @@ const MenuDescription = () => {
         <Col md={{ span: 4, offset: 2 }}>
           <div className="d-flex mt-3">
             <h5 className="mt-2">$ 45.00</h5>
-            <Button variant="success" className="text-white ms-3">
-              Add to cart
-            </Button>
+
+            <BaseButton
+              defaultClass="cart-button border-0"
+              name="Add to cart"
+            />
           </div>
         </Col>
       </Row>
