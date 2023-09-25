@@ -42,7 +42,11 @@ const Home: React.FC = () => {
                   className="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3"
                   key={i}
                 >
-                  <Card image={card.image} title={card.title} />
+                  <Card
+                    image={card.image}
+                    title={card.title}
+                    handleClick={() => console.log(card.title)}
+                  />
                 </div>
               ))}
           </div>

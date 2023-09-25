@@ -4,6 +4,8 @@ import { Button, Card, Col, Row, Table } from "react-bootstrap";
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
+
+//icons
 import { faCheck, faTruck, faTruckPickup } from "../../common/icons/Icons";
 
 const Delivery: React.FC = () => {

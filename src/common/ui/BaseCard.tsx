@@ -16,7 +16,7 @@ const BaseCard: React.FC<IProps> = ({
 }) => {
   return (
     <>
-      <div className="bg-light rounded-4" onClick={() => {}}>
+      <div className="bg-light rounded-4" onClick={handleClick}>
         <div className="">
           <div className="text-center">
             <img

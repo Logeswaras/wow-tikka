@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { Col, Container, Nav, Navbar, Row, Image } from "react-bootstrap";
+import { Col, Container, Nav, Navbar, Image } from "react-bootstrap";
 
 import BaseIcon from "../ui/BaseIcon";
-import { faBars } from "../../icons/Icons";
+import { faBagShopping, faBars } from "../../icons/Icons";
 
 const NavBar = () => {
   const logo = "logo";
@@ -27,6 +27,21 @@ const NavBar = () => {
     {
       name: "ONLINE ORDER",
       path: "notifications",
+    },
+    {
+      name: <BaseIcon icon={faBagShopping} classes="fs-5 text-warning" />,
+      path: "cart",
+    },
+    {
+      name: (
+        <Image
+          src="https://ionicframework.com/docs/img/demos/avatar.svg"
+          width={30}
+          height={30}
+          className="rounded-circle"
+        />
+      ),
+      path: "profile",
     },
   ];
 

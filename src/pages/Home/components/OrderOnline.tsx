@@ -22,7 +22,6 @@ const OrderOnline = () => {
       path: "/",
     },
   ];
-  console.log(window.screen.width > 320);
   return (
     <>
       <div className="mt-5 mobile-chip">
@@ -34,8 +33,8 @@ const OrderOnline = () => {
           className="mt-4 w-100"
         >
           {chips.map((chip, i) => (
-            <Carousel.Item>
-              <div className="text-center" key={i}>
+            <Carousel.Item key={i}>
+              <div className="text-center">
                 <NavLink
                   to={chip.path}
                   className="nav-link border rounded-3 d-inline-block px-3"
