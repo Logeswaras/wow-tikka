@@ -1,8 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { Col, Container, Nav, Navbar, Row, Image } from "react-bootstrap";
-
-import BaseIcon from "../ui/BaseIcon";
-import { faBars } from "../../icons/Icons";
+import { Col, Container, Nav, Navbar, Image } from "react-bootstrap";
 
 const NavBar = () => {
   const logo = "logo";

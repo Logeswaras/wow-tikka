@@ -7,7 +7,7 @@ const OrderOnline = () => {
   const chips = [
     {
       name: "Build your own",
-      path: "/menu-description/bowl",
+      path: "/",
     },
     {
       name: "Street food",
@@ -22,7 +22,7 @@ const OrderOnline = () => {
       path: "/",
     },
   ];
-  console.log(window.screen.width > 320);
+
   return (
     <>
       <div className="mt-5 mobile-chip">
@@ -33,9 +33,9 @@ const OrderOnline = () => {
           interval={null}
           className="mt-4 w-100"
         >
-          {chips.map((chip, i) => (
-            <Carousel.Item>
-              <div className="text-center" key={i}>
+          {chips.map((chip, index) => (
+            <Carousel.Item key={index}>
+              <div className="text-center">
                 <NavLink
                   to={chip.path}
                   className="nav-link border rounded-3 d-inline-block px-3"
