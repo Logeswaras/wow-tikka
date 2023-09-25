@@ -6,7 +6,7 @@ interface IProps {
   addToCard?: string;
   handleClick?: any;
 }
-const Card: React.FC<IProps> = ({
+const BaseCard: React.FC<IProps> = ({
   image,
   title,
   price,
@@ -33,4 +33,4 @@ const Card: React.FC<IProps> = ({
   );
 };
 
-export default Card;
+export default BaseCard;

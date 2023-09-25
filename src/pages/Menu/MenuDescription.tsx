@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 
-const MenuDescription = () => {
+const MenuDescription:React.FC = () => {
     const {menu} = useParams();
     return (
       <>
