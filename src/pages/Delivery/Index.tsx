@@ -20,7 +20,7 @@ const Delivery: React.FC = () => {
   const selectedDeliveryType = (
     <div className="d-flex justify-content-end">
       <span className="delivery"></span>
-      <div className="">
+      <div>
         <BaseIcon
           icon={faCheck}
           classes="position-absolute top-0 end-0 text-white mx-2 mt-1"

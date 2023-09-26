@@ -5,5 +5,6 @@ export {
   faTruck,
   faCheck,
   faTruckPickup,
-  faBagShopping
+  faBagShopping,
+  faCirclePlus,
 } from "@fortawesome/free-solid-svg-icons";

@@ -47,7 +47,7 @@ const NavBar = () => {
 
   return (
     <div className="px-3">
-      <Navbar collapseOnSelect expand="lg" className="">
+      <Navbar collapseOnSelect expand="lg">
         <Container>
           <Col md="2" sm="6" className="logo">
             <Image src={require(`../../../assets/Home/${logo}.svg`)} fluid />

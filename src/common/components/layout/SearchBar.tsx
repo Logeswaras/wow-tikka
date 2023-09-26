@@ -1,5 +1,5 @@
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Col, Container, Row } from "react-bootstrap";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 import BaseButton from "../controls/BaseButton";
 import BaseInput from "../controls/BaseInput";

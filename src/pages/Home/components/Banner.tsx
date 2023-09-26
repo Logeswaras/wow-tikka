@@ -1,11 +1,11 @@
-//custom components
-import BaseButton from "../../../common/components/controls/BaseButton";
-
 //react-bootstrap components
 import Image from "react-bootstrap/Image";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+
+//custom components
+import BaseButton from "../../../common/components/controls/BaseButton";
 
 const Banner = () => {
   const banner = "banner-img";

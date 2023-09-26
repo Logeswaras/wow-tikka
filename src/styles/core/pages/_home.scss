@@ -12,6 +12,13 @@
   display: block;
 }
 
+.price {
+  color: #ffa114;
+}
+.card-style {
+  cursor: pointer;
+}
+
 @media only screen and (max-width: 500px) {
   .banner-img {
     margin-top: 40px;
