@@ -1,9 +1,12 @@
+import { useState } from "react";
 import { Badge, Card, Col, Row } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import BaseButton from "../../common/components/controls/BaseButton";
+import MenuCustomization from "./components/MenuCustomization";
 
 const MenuDescription = () => {
   const { menu } = useParams();
+  const [showCustomize, setShowCustomize] = useState(false);
 
   const navigate = useNavigate();
 
@@ -11,10 +14,13 @@ const MenuDescription = () => {
 
   const ingredients = ["Rice", "Corn", "Onion", "Chicken Balls"];
 
+  const handleShow = () => setShowCustomize(true);
+  const handleClose = () => setShowCustomize(false);
+
   return (
     <>
       <h4 className="d-sm-none text-capitalize title">{menu}</h4>
-      <Card className="card">
+      <Card className="menu-card">
         <Card.Body>
           <Row>
             <Col md={4} className="custom-image">
@@ -44,6 +50,7 @@ const MenuDescription = () => {
                   <BaseButton
                     defaultClass="customize-button border-0"
                     name="Customize"
+                    handleClick={handleShow}
                   />
                 </Col>
               </Row>
@@ -74,6 +81,8 @@ const MenuDescription = () => {
           </div>
         </Col>
       </Row>
+
+      {showCustomize && <MenuCustomization onClose={handleClose} />}
     </>
   );
 };

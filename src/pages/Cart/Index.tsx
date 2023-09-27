@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, Card, Col, Row, Table } from "react-bootstrap";
+import axios from "axios";
 
 //custom components
 import BaseButton from "../../common/components/controls/BaseButton";
@@ -7,8 +8,6 @@ import BaseInput from "../../common/components/controls/BaseInput";
 
 //Icons
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-
-import axios from "axios";
 
 interface ProductData {
   image: string;
@@ -29,6 +28,7 @@ const Cart: React.FC = () => {
   useEffect(() => {
     getProducts();
   }, []);
+
   return (
     <>
       <Row className="px-5 mt-3 g-0 justify-content-between">
@@ -43,8 +43,8 @@ const Cart: React.FC = () => {
             </thead>
             <tbody>
               {cartData &&
-                cartData.map((item, i) => (
-                  <tr className="align-middle add-to-cart-cart" key={i}>
+                cartData.map((item, index) => (
+                  <tr className="align-middle add-to-cart-cart" key={index}>
                     <td>
                       <div className="d-md-flex align-items-center">
                         <img
@@ -57,10 +57,10 @@ const Cart: React.FC = () => {
                         <div className="ms-5">
                           <h5 className="mt-3 mt-md-0">{item.title}</h5>
                           <div className="">
-                            {item.ingredients.map((chips, i) => (
+                            {item.ingredients.map((chips, index) => (
                               <span
                                 className="bg-light border rounded-3 px-3 me-2 d-lg-inline-block mt-lg-1"
-                                key={i}
+                                key={index}
                               >
                                 {chips}
                               </span>

@@ -5,27 +5,45 @@
   "products": [
     {
       "image": "item-1",
-      "title": "Rice Bowls"
+      "title": "Rice Bowls",
+      "price": "$ 7.49",
+      "calories": "100",
+      "persons": "4"
     },
     {
       "image": "item-2",
-      "title": "Wheat wraps"
+      "title": "Wheat wraps",
+      "price": "$ 7.49",
+      "calories": "100",
+      "persons": "4"
     },
     {
       "image": "item-3",
-      "title": "Salad Bowl"
+      "title": "Salad Bowl",
+      "price": "$ 7.49",
+      "calories": "100",
+      "persons": "4"
     },
     {
       "image": "item-4",
-      "title": "Sauces"
+      "title": "Sauces",
+      "price": "$ 7.49",
+      "calories": "100",
+      "persons": "4"
     },
     {
       "image": "item-5",
-      "title": "Sides"
+      "title": "Sides",
+      "price": "$ 7.49",
+      "calories": "100",
+      "persons": "4"
     },
     {
       "image": "item-6",
-      "title": "Beverages"
+      "title": "Beverages",
+      "price": "$ 7.49",
+      "calories": "100",
+      "persons": "4"
     }
   ],
   "cart": [
