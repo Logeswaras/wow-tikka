@@ -1,9 +1,11 @@
 import { Badge, Card, Col, Row } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BaseButton from "../../common/components/controls/BaseButton";
 
 const MenuDescription = () => {
   const { menu } = useParams();
+
+  const navigate = useNavigate();
 
   const menuImage = "menu1";
 
@@ -67,6 +69,7 @@ const MenuDescription = () => {
             <BaseButton
               defaultClass="cart-button border-0"
               name="Add to cart"
+              handleClick={() => navigate("/delivery")}
             />
           </div>
         </Col>

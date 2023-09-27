@@ -161,9 +161,11 @@ const Cart: React.FC = () => {
                   <p>$ 45.00</p>
                 </div>
               </div>
-              <Button variant="success" className="w-100 mt-2">
-                Continue to Payment
-              </Button>
+              <BaseButton
+                types="button"
+                defaultClass="btn-success border-0 w-100"
+                name="continue to payment"
+              />
             </Card.Body>
           </Card>
         </Col>

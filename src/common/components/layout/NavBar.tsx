@@ -29,7 +29,12 @@ const NavBar = () => {
       path: "notifications",
     },
     {
-      name: <BaseIcon icon={faBagShopping} classes="fs-5 text-warning" />,
+      name: (
+        <BaseIcon
+          icon={faBagShopping}
+          classes="fs-5 text-warning lg-card-icon"
+        />
+      ),
       path: "cart",
     },
     {
@@ -52,6 +57,12 @@ const NavBar = () => {
           <Col md="2" sm="6" className="logo">
             <Image src={require(`../../../assets/Home/${logo}.svg`)} fluid />
           </Col>
+          <NavLink to="cart" className="nav-link ms-auto me-3 me-md-5">
+            <BaseIcon
+              icon={faBagShopping}
+              classes="fs-5 text-warning sm-card-icon"
+            />
+          </NavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="m-auto">

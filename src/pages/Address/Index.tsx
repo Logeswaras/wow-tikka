@@ -1,27 +1,25 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Row, Table } from "react-bootstrap";
+import { Button, Card, Col, Row, Table, Image } from "react-bootstrap";
 
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
 
 //icons
-import { faCheck, faTruck, faTruckPickup } from "../../common/icons/Icons";
+import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
 import BaseButton from "../../common/components/controls/BaseButton";
-import { useNavigate } from "react-router-dom";
 
-const Delivery: React.FC = () => {
-  const [deliveryType, setDeliveryType] = useState<string>("");
+const Address: React.FC = () => {
+  const [addressType, setAddressType] = useState<string>("");
 
-  const navigate = useNavigate();
+  const newAddress = "addnewaddress";
 
   const handleSelected = (value: string) => {
     console.log("first");
-    setDeliveryType(value);
-    console.log(deliveryType);
+    setAddressType(value);
   };
 
-  const selectedDeliveryType = (
+  const selectedAddressType = (
     <div className="d-flex justify-content-end">
       <span className="delivery"></span>
       <div className="">
@@ -44,19 +42,32 @@ const Delivery: React.FC = () => {
             >
               <div
                 className={`border rounded-1 ${
-                  deliveryType === "delivery" &&
+                  addressType === "delivery" &&
                   "border-success bg-success-light"
                 }`}
               >
-                {deliveryType === "delivery" ? (
-                  selectedDeliveryType
+                {addressType === "delivery" ? (
+                  selectedAddressType
                 ) : (
                   <div className="pt-5"></div>
                 )}
                 <div className="ps-5 pe-5 pb-3 text-muted">
-                  <BaseIcon icon={faTruck} classes="fs-1" />
-                  <h6 className="mt-2 text-dark">Delivery</h6>
-                  <p>8:45 pm GMT</p>
+                  <h6 className="mt-2 text-dark">Address -1</h6>
+                  <p>1/234 Movin,palakodu TK, Dharmapuri Dt Pin -636810</p>
+                  <div className="d-flex justify-content-between">
+                    <BaseButton
+                      types="button"
+                      defaultClass="btn-light"
+                      name="Edit"
+                      icon={faEdit}
+                    />
+                    <BaseButton
+                      types="button"
+                      defaultClass="btn-light"
+                      name="Delete"
+                      icon={faTrash}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -67,18 +78,19 @@ const Delivery: React.FC = () => {
             >
               <div
                 className={`border rounded-1 ${
-                  deliveryType === "pickup" && "border-success bg-success-light"
+                  addressType === "pickup" && "border-success bg-success-light"
                 }`}
               >
-                {deliveryType === "pickup" ? (
-                  selectedDeliveryType
+                {addressType === "pickup" ? (
+                  selectedAddressType
                 ) : (
                   <div className="pt-5"></div>
                 )}
-                <div className="ps-5 pe-5 pb-3 text-muted">
-                  <BaseIcon icon={faTruckPickup} classes="fs-1" />
-                  <h6 className="mt-2 text-dark">Pickup</h6>
-                  <p>8:45 pm GMT</p>
+                <div className="ps-5 pe-5 pb-3 text-muted text-center">
+                  <Image
+                    src={require(`../../assets/Address/${newAddress}.svg`)}
+                  />
+                  <p className="mt-2">Add new address</p>
                 </div>
               </div>
             </div>
@@ -151,7 +163,6 @@ const Delivery: React.FC = () => {
                 types="button"
                 defaultClass="btn-success border-0 w-100"
                 name="continue to payment"
-                handleClick={() => navigate("/address")}
               />
             </Card.Body>
           </Card>
@@ -161,4 +172,4 @@ const Delivery: React.FC = () => {
   );
 };
 
-export default Delivery;
+export default Address;

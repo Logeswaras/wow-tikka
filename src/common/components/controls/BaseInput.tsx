@@ -47,28 +47,19 @@ const BaseInput: React.FC<TextInputProps> = ({
   return (
     <>
       <div className={`${size}`}>
-        {label && <Form.Label className={`form-label ${labelClass}`}>{label}</Form.Label>}
-        
+        {label && (
+          <Form.Label className={`form-label ${labelClass}`}>
+            {label}
+          </Form.Label>
+        )}
+
         {/* {label && <label className={`form-label ${labelClass}`}>{label}</label>} */}
-        <div className={`form-group  ${inputIcon && "icon"}`}>
+        <div className={`form-group  ${inputIcon && "icon"} input-material`}>
           {inputIcon ? (
             <span className="form-control-feedback">
               <BaseIcon icon={inputIcon} classes={iconClass} />
             </span>
           ) : null}
-
-          {/* <input
-            type={type}
-            value={value}
-            name={name}
-            placeholder={placeholder}
-            readOnly={readOnly}
-            minLength={minLength}
-            maxLength={maxLength}
-            className={`form-control ${inputClass} ${inputBgColor}`}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          ></input> */}
           <Form.Control
             type={type}
             value={value}

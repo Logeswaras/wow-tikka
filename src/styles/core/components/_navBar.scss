@@ -2,6 +2,12 @@
   color: #5a1410 !important;
   font-weight: 500;
 }
+.sm-card-icon {
+  display: none;
+}
+.lg-card-icon {
+  display: block;
+}
 
 @media (max-width: 500px) {
   .logo {
@@ -9,6 +15,12 @@
     img {
       width: 100px;
     }
+  }
+  .lg-card-icon {
+    display: none;
+  }
+  .sm-card-icon {
+    display: block;
   }
 }
 
@@ -18,5 +30,11 @@
     img {
       width: 150px;
     }
+  }
+  .lg-card-icon {
+    display: none;
+  }
+  .sm-card-icon {
+    display: block;
   }
 }

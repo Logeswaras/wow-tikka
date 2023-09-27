@@ -8,6 +8,7 @@ const MenuDescription = React.lazy(
 );
 const Cart = React.lazy(() => import("../pages/Cart/Index"));
 const Delivery = React.lazy(() => import("../pages/Delivery/Index"));
+const Address = React.lazy(() => import("../pages/Address/Index"));
 
 const routes = [
   {
@@ -29,6 +30,10 @@ const routes = [
       {
         path: "/delivery",
         element: <Delivery />,
+      },
+      {
+        path: "/address",
+        element: <Address />,
       },
     ],
   },

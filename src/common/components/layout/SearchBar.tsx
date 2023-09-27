@@ -16,15 +16,15 @@ const SearchBar = () => {
               placeholder="Please select your location"
               inputIcon={faLocationDot}
               size="d-sm-block"
+              inputBgColor="bg-light"
+              inputClass="rounded-1"
+              iconClass="ms-2"
             />
           </div>
         </Col>
         <Col md={2} sm={12}>
           <div className="search-button">
-            <BaseButton
-              defaultClass="btn-success"
-              name="Search"
-            />
+            <BaseButton defaultClass="btn-success" name="Search" />
           </div>
         </Col>
       </Row>

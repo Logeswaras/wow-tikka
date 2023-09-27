@@ -51,7 +51,7 @@ const Home: React.FC = () => {
                     image={card.image}
                     title={card.title}
                     handleClick={() => handleMenuPage(card.title)}
-                    defaultClass="bg-light border-0 rounded-4"
+                    defaultClass="bg-light border-0 rounded-4 mt-3 mt-lg-0"
                   />
                 </div>
               ))}
