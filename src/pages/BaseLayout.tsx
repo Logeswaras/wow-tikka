@@ -19,7 +19,6 @@ const BaseLayout: React.FC = () => {
         <NavBar />
         {(location.pathname === "/" ||
           location.pathname === "/menu-description/:menu") && <SearchBar />}
-        
       </div>
       <Outlet />
     </>

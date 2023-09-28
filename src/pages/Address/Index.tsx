@@ -99,10 +99,11 @@ const Address: React.FC = () => {
                 </div>
               </div>
             </div>
-            <Modal show={show} onHide={handleClose}>
-              <Modal.Header closeButton />
-              <AddressModal />
-            </Modal>
+            <div style={{ width: 944, height: 582 }}>
+              <Modal show={show} onHide={handleClose}>
+                <AddressModal />
+              </Modal>
+            </div>
           </div>
         </Col>
         <Col lg="4" className="mt-3 mt-lg-0">
