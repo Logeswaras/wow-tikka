@@ -1,50 +1,12 @@
-.pop-up-container {
-  width: 890px;
-  height: 500px;
-  background-color: white;
-  display: flex;
-  flex-direction: row;
-  align-self: center;
-  justify-self: center;
-  align-items: center;
-  border-radius: 5px;
-}
-.image-container {
-  width: 400px;
-  height: 450px;
+.image-bg {
   background-color: rgba(226, 251, 215, 0.65);
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  margin: 30px;
 }
-.image {
-  width: 200px;
-  height: 200px;
-  margin-left: 100px;
-  margin-right: 100px;
-  margin-top: 125px;
-  margin-bottom: 125px;
-  align-self: center;
+.img-dim {
+  width: 175px;
+  height: 175px;
 }
-.input-container {
-  width: 400px;
-  height: 450px;
-}
-.input-title {
-  margin-bottom: 20px;
-}
-.input-box {
-  margin-bottom: 20px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  // background-color: #EEEEEE;
-}
-.input-save-button {
-  background-color: #FFA831;
-  width: 100%;
-  border-width: 0px;
-  font-weight: bold;
+.form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }

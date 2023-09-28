@@ -16,7 +16,6 @@ const Address: React.FC = () => {
 
   const newAddress = "addnewaddress";
 
-  // const handleClose = () => setShow(false);
   const handleModal = () => setShow(!show);
 
   const handleSelected = (value: string) => {
@@ -99,9 +98,7 @@ const Address: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div>
-              <AddressModal />
-            </div>
+            <AddressModal show={show} handleModal={handleModal} />
           </div>
         </Col>
         <Col lg="4" className="mt-3 mt-lg-0">
