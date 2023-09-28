@@ -3,30 +3,26 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, Col, Row } from "react-bootstrap";
 
+//components
 import Banner from "./components/Banner";
 import OrderOnline from "./components/OrderOnline";
-import BaseButton from "../../common/components/controls/BaseButton";
-import BaseIcon from "../../common/components/ui/BaseIcon";
-import { faCirclePlus } from "../../common/icons/Icons";
 import MenuCustomization from "../Menu/components/MenuCustomization";
-import { useAppDispatch } from "../../store";
-import { addToCart } from "../../store/features/orderingSyatemSlice";
-// import Card from "../../common/ui/BaseCard";
 
-interface ProductData {
-  id: number;
-  image: string;
-  title: string;
-  price: number;
-  calories: string;
-  persons: string;
-  description: string;
-  quantity: number;
-  ingredients: Array<string>;
-}
+//custom components
+import BaseButton from "../../common/components/controls/BaseButton";
+
+//store
+import { useAppDispatch } from "../../store";
+import {
+  addToCart,
+  handleCardDescription,
+} from "../../store/features/orderingSyatemSlice";
+
+//model
+import { ProductDataModel } from "../../common/models";
 
 const Home: React.FC = () => {
-  const [cardData, setCardData] = useState<Array<ProductData>>([]);
+  const [cardData, setCardData] = useState<Array<ProductDataModel>>([]);
 
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -47,8 +43,9 @@ const Home: React.FC = () => {
     getProducts();
   }, []);
 
-  const handleMenuPage = (name: string) => {
-    navigate(`/menu-description/${name}`);
+  const handleMenuPage = (itemData: ProductDataModel) => {
+    dispatch(handleCardDescription(itemData));
+    navigate(`/menu-description/${itemData.id}`);
   };
 
   return (
@@ -118,11 +115,11 @@ const Home: React.FC = () => {
                 <Col key={index} sm={12} md={6} lg={4} xl={4} xxl={3}>
                   <Card className="mb-5 bg-light border-0 item-card">
                     <Card.Img
-                      src={require(`../../assets/Home/${card.image}.svg`)}
+                      src={card.image}
                       alt="item-1"
                       className="p-2 card-img"
-                      height={150}
-                      onClick={() => handleMenuPage(card.title)}
+                      height={200}
+                      onClick={() => handleMenuPage(card)}
                     />
                     <Card.Body>
                       <div className="d-flex justify-content-between mb-2">
@@ -146,7 +143,11 @@ const Home: React.FC = () => {
                           <p className="fw-light">/{card.calories} Calories</p>
                         </div>
 
-                        <BaseButton defaultClass="border-0 add" name="Add" />
+                        <BaseButton
+                          defaultClass="border-0 add"
+                          name="Add"
+                          handleClick={() => dispatch(addToCart(card))}
+                        />
                       </div>
                     </Card.Body>
                   </Card>

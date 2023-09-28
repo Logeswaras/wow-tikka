@@ -131,8 +131,7 @@ const Delivery: React.FC = () => {
                   </Button>
                 </div>
               </div>
-              <div className="border border-1 my-3"></div>
-              <div>
+              <div className="mt-3">
                 <div className="d-flex justify-content-between">
                   <h6 className="text-muted">Subtotal</h6>
                   <p>$ 45.00</p>
@@ -150,7 +149,7 @@ const Delivery: React.FC = () => {
               <BaseButton
                 types="button"
                 defaultClass="btn-success border-0 w-100"
-                name="continue to payment"
+                name="Continue to payment"
                 handleClick={() => navigate("/address")}
               />
             </Card.Body>

@@ -8,9 +8,12 @@ import BaseIcon from "../../common/components/ui/BaseIcon";
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
 import BaseButton from "../../common/components/controls/BaseButton";
+import { useNavigate } from "react-router-dom";
 
 const Address: React.FC = () => {
   const [addressType, setAddressType] = useState<string>("");
+
+  const navigate = useNavigate();
 
   const newAddress = "addnewaddress";
 
@@ -143,8 +146,7 @@ const Address: React.FC = () => {
                   </Button>
                 </div>
               </div>
-              <div className="border border-1 my-3"></div>
-              <div>
+              <div className="mt-3">
                 <div className="d-flex justify-content-between">
                   <h6 className="text-muted">Subtotal</h6>
                   <p>$ 45.00</p>
@@ -162,7 +164,8 @@ const Address: React.FC = () => {
               <BaseButton
                 types="button"
                 defaultClass="btn-success border-0 w-100"
-                name="continue to payment"
+                name="Continue to payment"
+                handleClick={() => navigate("/payment")}
               />
             </Card.Body>
           </Card>

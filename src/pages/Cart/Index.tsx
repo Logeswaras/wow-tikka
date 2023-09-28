@@ -13,10 +13,12 @@ import {
   quantityDecrement,
   quantityIncrement,
 } from "../../store/features/orderingSyatemSlice";
+import { useNavigate } from "react-router-dom";
 
 const Cart: React.FC = () => {
   const addCartData = useAppSelector((store) => store.orederSystem.cart);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -159,6 +161,7 @@ const Cart: React.FC = () => {
                 types="button"
                 defaultClass="btn-success border-0 w-100"
                 name="Continue to payment"
+                handleClick={() => navigate("/delivery")}
               />
             </Card.Body>
           </Card>

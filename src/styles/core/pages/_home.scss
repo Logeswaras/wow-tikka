@@ -13,14 +13,17 @@
 }
 
 .add {
-  background-color: #34B53A;
+  background-color: #34b53a;
 }
 
 .price {
   color: #ffa114;
 }
-
-.home-customize{
+.card-img {
+  cursor: pointer;
+  object-fit: scale-down;
+}
+.home-customize {
   border: solid 1px lightgrey;
   color: grey;
 }
