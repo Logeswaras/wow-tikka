@@ -53,7 +53,7 @@ const Home: React.FC = () => {
       </div>
       <div className="px-5">
         <div className="mt-5">
-          <Row xs={1} md={2} className="g-4">
+          {/* <Row xs={1} md={2} className="g-4">
             {cardData &&
               cardData.map((card, index) => (
                 <Col key={index} md={6} lg={4} xl={4} xxl={3}>
@@ -99,27 +99,49 @@ const Home: React.FC = () => {
                   </Card>
                 </Col>
               ))}
-          </Row>
-          {/* <div className="row">
+          </Row> */}
+
+          <Row xs={1} md={3} className="g-4">
             {cardData &&
               cardData.map((card, index) => (
-                <div
-                  className="col-12 col-md-6 col-lg-4 col-xl-4 col-xxl-3"
-                  key={index}
-                >
-                  <Card
-                    image={card.image}
-                    title={card.title}
-                    handleClick={() => handleMenuPage(card.title)}
-<<<<<<< HEAD
-                    defaultClass="bg-light border-0 rounded-4 mt-3 mt-lg-0"
-=======
-                    defaultClass="bg-light border-0 rounded-4 card-style"
->>>>>>> a0cec7043aeadd6f4864293c62f6e5d9a070179d
-                  />
-                </div>
+                <Col key={index} sm={12} md={6} lg={4} xl={4} xxl={3}>
+                  <Card className="mb-5 bg-light border-0 item-card">
+                    <Card.Img
+                      src={require(`../../assets/Home/${card.image}.svg`)}
+                      alt="item-1"
+                      className="p-2 card-img"
+                      height={150}
+                      onClick={() => handleMenuPage(card.title)}
+                    />
+                    <Card.Body>
+                      <div className="d-flex justify-content-between mb-2">
+                        <Card.Title>{card.title}</Card.Title>
+                        <BaseButton
+                          defaultClass="btn-sm btn-light home-customize"
+                          name="Customize"
+                          handleClick={handleShow}
+                        />
+                      </div>
+
+                      <Card.Text>
+                        This is a longer card with supporting text below as a
+                        natural lead-in to additional content. This content is a
+                        little bit longer.
+                      </Card.Text>
+
+                      <div className="d-flex justify-content-between mb-2">
+                        <div className="d-flex">
+                          <p className="fw-semibold">{card.price} </p>
+                          <p className="fw-light">/{card.calories} Calories</p>
+                        </div>
+
+                        <BaseButton defaultClass="border-0 add" name="Add" />
+                      </div>
+                    </Card.Body>
+                  </Card>
+                </Col>
               ))}
-          </div> */}
+          </Row>
         </div>
       </div>
 

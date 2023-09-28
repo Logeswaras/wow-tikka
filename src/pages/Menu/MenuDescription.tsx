@@ -1,12 +1,15 @@
 import { useState } from "react";
-import { Badge, Card, Col, Row } from "react-bootstrap";
+import { Badge, Card, Col, Row, Toast, ToastContainer } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
 import BaseButton from "../../common/components/controls/BaseButton";
 import MenuCustomization from "./components/MenuCustomization";
+import SearchBar from "../../common/components/layout/SearchBar";
 
 const MenuDescription = () => {
   const { menu } = useParams();
   const [showCustomize, setShowCustomize] = useState(false);
+
+  const [showToast, setShowToast] = useState(false);
 
   const navigate = useNavigate();
 
@@ -14,11 +17,19 @@ const MenuDescription = () => {
 
   const ingredients = ["Rice", "Corn", "Onion", "Chicken Balls"];
 
+  const handleShowToast = () => {
+    setShowToast(true);
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
+  };
+  const handleCloseToast = () => setShowToast(false);
   const handleShow = () => setShowCustomize(true);
   const handleClose = () => setShowCustomize(false);
 
   return (
     <>
+      <SearchBar />
       <h4 className="d-sm-none text-capitalize title">{menu}</h4>
       <Card className="menu-card">
         <Card.Body>
@@ -76,12 +87,20 @@ const MenuDescription = () => {
             <BaseButton
               defaultClass="cart-button border-0"
               name="Add to cart"
-              handleClick={() => navigate("/delivery")}
+              handleClick={handleShowToast}
             />
           </div>
         </Col>
       </Row>
-
+      <ToastContainer position="bottom-center">
+        <Toast show={showToast} onClose={handleCloseToast}>
+          <Toast.Header>
+            <strong className="m-auto py-3 fs-6 text-green">
+              Item is added to cart!
+            </strong>
+          </Toast.Header>
+        </Toast>
+      </ToastContainer>
       {showCustomize && <MenuCustomization onClose={handleClose} />}
     </>
   );

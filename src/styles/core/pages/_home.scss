@@ -12,9 +12,19 @@
   display: block;
 }
 
+.add {
+  background-color: #34B53A;
+}
+
 .price {
   color: #ffa114;
 }
+
+.home-customize{
+  border: solid 1px lightgrey;
+  color: grey;
+}
+
 .card-style {
   cursor: pointer;
 }
@@ -40,5 +50,18 @@
   }
   .tablet-chip {
     display: none;
+  }
+  .item-card {
+    padding: 0 !important;
+  }
+
+  .add {
+    display: flex;
+  }
+}
+
+@media (min-width: 769px) {
+  .item-card {
+    margin-right: 2rem;
   }
 }
