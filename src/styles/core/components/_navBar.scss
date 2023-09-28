@@ -21,6 +21,10 @@
   }
   .sm-card-icon {
     display: block;
+    margin-right: 10px;
+    span {
+      display: block;
+    }
   }
 }
 
@@ -36,5 +40,8 @@
   }
   .sm-card-icon {
     display: block;
+    span {
+      display: block;
+    }
   }
 }

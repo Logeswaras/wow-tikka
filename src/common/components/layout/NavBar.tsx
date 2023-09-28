@@ -1,10 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { Col, Container, Nav, Navbar, Image } from "react-bootstrap";
+import { Col, Container, Nav, Navbar, Image, Badge } from "react-bootstrap";
 
 import BaseIcon from "../ui/BaseIcon";
 import { faBagShopping } from "../../icons/Icons";
+import BaseBage from "../../ui/BaseBadge";
+import BaseBadge from "../../ui/BaseBadge";
+import { useAppSelector } from "../../../store";
 
 const NavBar = () => {
+  const selecter = useAppSelector((store) => store.orederSystem.cart);
   const logo = "logo";
 
   const links = [
@@ -29,12 +33,7 @@ const NavBar = () => {
       path: "notifications",
     },
     {
-      name: (
-        <BaseIcon
-          icon={faBagShopping}
-          classes="fs-5 text-warning lg-card-icon"
-        />
-      ),
+      name: <BaseBadge count={selecter.length} defaultClass="lg-card-icon" />,
       path: "cart",
     },
     {
@@ -58,10 +57,7 @@ const NavBar = () => {
             <Image src={require(`../../../assets/Home/${logo}.svg`)} fluid />
           </Col>
           <NavLink to="cart" className="nav-link ms-auto me-3 me-md-5">
-            <BaseIcon
-              icon={faBagShopping}
-              classes="fs-5 text-warning sm-card-icon"
-            />
+            <BaseBadge count={selecter.length} defaultClass="sm-card-icon" />
           </NavLink>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
