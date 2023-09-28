@@ -9,18 +9,26 @@ import BaseButton from "../../common/components/controls/BaseButton";
 import BaseIcon from "../../common/components/ui/BaseIcon";
 import { faCirclePlus } from "../../common/icons/Icons";
 import MenuCustomization from "../Menu/components/MenuCustomization";
+import { useAppDispatch } from "../../store";
+import { addToCart } from "../../store/features/orderingSyatemSlice";
 // import Card from "../../common/ui/BaseCard";
 
 interface ProductData {
+  id: number;
   image: string;
   title: string;
-  price: string;
+  price: number;
   calories: string;
   persons: string;
+  description: string;
+  quantity: number;
+  ingredients: Array<string>;
 }
 
 const Home: React.FC = () => {
   const [cardData, setCardData] = useState<Array<ProductData>>([]);
+
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const [showCustomize, setShowCustomize] = useState(false);
@@ -59,7 +67,7 @@ const Home: React.FC = () => {
                 <Col key={index} md={6} lg={4} xl={4} xxl={3}>
                   <Card
                     className="bg-light border-0 rounded-4 card-style"
-                    onClick={() => handleMenuPage(card.title)}
+                    // onClick={() => handleMenuPage(card.title)}
                   >
                     <Row className="d-flex align-items-center">
                       <Col>
@@ -77,14 +85,16 @@ const Home: React.FC = () => {
                       </Col>
                       <Col md={7}>
                         <Card.Img
-                          src={require(`../../assets/Home/${card.image}.svg`)}
+                          src={card.image}
                           alt="item-1"
-                          className="p-2 card-img"
+                          className="p-2 card-img rounded-5"
                           height={150}
                         />
                       </Col>
                       <div className="ms-3 d-flex align-items-center">
-                        <p className="price fw-semibold mt-3">{card.price}</p>
+                        <p className="price fw-semibold mt-3">
+                          {card.price.toFixed(2)}
+                        </p>
                         <BaseIcon
                           icon={faCirclePlus}
                           classes="ms-3 text-warning"
@@ -92,7 +102,8 @@ const Home: React.FC = () => {
                         <BaseButton
                           defaultClass="ms-3  btn-sm customize-button border-0"
                           name="Customize"
-                          handleClick={handleShow}
+                          // handleClick={handleShow}
+                          handleClick={() => dispatch(addToCart(card))}
                         />
                       </div>
                     </Row>
