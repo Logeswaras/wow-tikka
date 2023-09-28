@@ -16,8 +16,8 @@ const Address: React.FC = () => {
 
   const newAddress = "addnewaddress";
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  const handleModal = () => setShow(!show);
 
   const handleSelected = (value: string) => {
     console.log("first");
@@ -78,7 +78,7 @@ const Address: React.FC = () => {
             </div>
             <div
               className="col-12 col-md-4 me-0 me-md-3 mt-3 mt-md-0 p-0 position-relative"
-              onClick={handleShow}
+              onClick={handleModal}
               role="button"
             >
               <div
@@ -99,10 +99,8 @@ const Address: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div style={{ width: 944, height: 582 }}>
-              <Modal show={show} onHide={handleClose}>
-                <AddressModal />
-              </Modal>
+            <div>
+              <AddressModal />
             </div>
           </div>
         </Col>

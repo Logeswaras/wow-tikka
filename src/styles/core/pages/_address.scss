@@ -1,22 +1,50 @@
+.pop-up-container {
+  width: 890px;
+  height: 500px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-self: center;
+  align-items: center;
+  border-radius: 5px;
+}
 .image-container {
-  width: 400;
-  height: 450;
-  background-color: "rgba(226, 251, 215, 0.65)";
-  align-items: "center";
-  justify-content: "center";
-  border-radius: 5;
-  margin: 25;
+  width: 400px;
+  height: 450px;
+  background-color: rgba(226, 251, 215, 0.65);
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  margin: 30px;
 }
 .image {
-  width: 200;
-  height: 200;
-  margin-top: 125;
-  margin-bottom: 125;
-  margin-left: 100;
-  margin-right: 100;
-  align-self: "center";
+  width: 200px;
+  height: 200px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 125px;
+  margin-bottom: 125px;
+  align-self: center;
 }
 .input-container {
-  width: 400;
-  height: 450;
+  width: 400px;
+  height: 450px;
+}
+.input-title {
+  margin-bottom: 20px;
+}
+.input-box {
+  margin-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  // background-color: #EEEEEE;
+}
+.input-save-button {
+  background-color: #FFA831;
+  width: 100%;
+  border-width: 0px;
+  font-weight: bold;
 }
