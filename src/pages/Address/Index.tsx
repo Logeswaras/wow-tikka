@@ -1,18 +1,23 @@
 import React, { useState } from "react";
-import { Button, Card, Col, Row, Table, Image } from "react-bootstrap";
+import { Button, Card, Col, Row, Table, Image, Modal } from "react-bootstrap";
 
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
+import BaseButton from "../../common/components/controls/BaseButton";
+import AddressModal from "./components/AddressModal";
 
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
-import BaseButton from "../../common/components/controls/BaseButton";
 
 const Address: React.FC = () => {
   const [addressType, setAddressType] = useState<string>("");
+  const [show, setShow] = useState<boolean>(false);
 
   const newAddress = "addnewaddress";
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleSelected = (value: string) => {
     console.log("first");
@@ -73,7 +78,7 @@ const Address: React.FC = () => {
             </div>
             <div
               className="col-12 col-md-4 me-0 me-md-3 mt-3 mt-md-0 p-0 position-relative"
-              onClick={() => handleSelected("pickup")}
+              onClick={handleShow}
               role="button"
             >
               <div
@@ -94,6 +99,10 @@ const Address: React.FC = () => {
                 </div>
               </div>
             </div>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton />
+              <AddressModal />
+            </Modal>
           </div>
         </Col>
         <Col lg="4" className="mt-3 mt-lg-0">
