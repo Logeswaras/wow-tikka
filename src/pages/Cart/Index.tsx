@@ -1,11 +1,11 @@
-import {Card, Col, Row, Table } from "react-bootstrap";
+import { Card, Col, Row, Table } from "react-bootstrap";
 
 //custom components
 import BaseButton from "../../common/components/controls/BaseButton";
 import BaseInput from "../../common/components/controls/BaseInput";
 
 //Icons
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faPlus, faBoxOpen } from "../../common/icons/Icons";
 
 //store
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -14,6 +14,7 @@ import {
   quantityIncrement,
 } from "../../store/features/orderingSyatemSlice";
 import { useNavigate } from "react-router-dom";
+import BaseIcon from "../../common/components/ui/BaseIcon";
 
 const Cart: React.FC = () => {
   const addCartData = useAppSelector((store) => store.orederSystem.cart);
@@ -24,76 +25,85 @@ const Cart: React.FC = () => {
     <>
       <Row className="px-5 mt-3 g-0 justify-content-between">
         <Col lg="7" sm="12">
-          <Table responsive borderless className="cart-table">
-            <thead>
-              <tr className="d-none d-md-table-row">
-                <th className="text-muted">ITEM</th>
-                <th className="text-muted">QUANTITY</th>
-                <th className="text-muted">PRICE</th>
-              </tr>
-            </thead>
-            <tbody>
-              {addCartData &&
-                addCartData.map((item, index) => (
-                  <tr className="align-middle add-to-cart-cart" key={index}>
-                    <td>
-                      <div className="d-md-flex align-items-center">
-                        <img
-                          src={item.image}
-                          alt="img"
-                          className="rounded-2"
-                          width={60}
-                          height={60}
-                        />
-                        <div className="ms-5">
-                          <h5 className="mt-3 mt-md-0">{item.title}</h5>
-                          <div className="">
-                            {item.ingredients.map((chips, index) => (
-                              <span
-                                className="bg-light border rounded-3 px-3 me-2 d-lg-inline-block mt-lg-1"
-                                key={index}
-                              >
-                                {chips}
-                              </span>
-                            ))}
+          {addCartData.length ? (
+            <Table responsive borderless className="cart-table">
+              <thead>
+                <tr className="d-none d-md-table-row">
+                  <th className="text-muted">ITEM</th>
+                  <th className="text-muted">QUANTITY</th>
+                  <th className="text-muted">PRICE</th>
+                </tr>
+              </thead>
+              <tbody>
+                {addCartData &&
+                  addCartData.map((item, index) => (
+                    <tr className="align-middle add-to-cart-cart" key={index}>
+                      <td>
+                        <div className="d-md-flex align-items-center">
+                          <img
+                            src={item.image}
+                            alt="img"
+                            className="rounded-2"
+                            width={60}
+                            height={60}
+                          />
+                          <div className="ms-5">
+                            <h5 className="mt-3 mt-md-0">{item.title}</h5>
+                            <div className="">
+                              {item.ingredients.map((chips, index) => (
+                                <span
+                                  className="bg-light border rounded-3 px-3 me-2 d-lg-inline-block mt-lg-1"
+                                  key={index}
+                                >
+                                  {chips}
+                                </span>
+                              ))}
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td>
-                      <div className="d-flex">
-                        <div className="d-flex align-items-center border rounded-1">
-                          <div>
-                            <BaseButton
-                              icon={faMinus}
-                              types="button"
-                              defaultClass="btn btn-light ps-2"
-                              handleClick={() =>
-                                dispatch(quantityDecrement(item))
-                              }
-                            />
-                          </div>
-                          <div className="bg-warning text-white py-1 px-2 rounded-1">
-                            {item.quantity}
-                          </div>
-                          <div>
-                            <BaseButton
-                              icon={faPlus}
-                              types="button"
-                              defaultClass="btn btn-light ps-2"
-                              handleClick={() =>
-                                dispatch(quantityIncrement(item))
-                              }
-                            />
+                      </td>
+                      <td>
+                        <div className="d-flex">
+                          <div className="d-flex align-items-center border rounded-1">
+                            <div>
+                              <BaseButton
+                                icon={faMinus}
+                                types="button"
+                                defaultClass="btn btn-light ps-2"
+                                handleClick={() =>
+                                  dispatch(quantityDecrement(item))
+                                }
+                              />
+                            </div>
+                            <div className="bg-warning text-white py-1 px-2 rounded-1">
+                              {item.quantity}
+                            </div>
+                            <div>
+                              <BaseButton
+                                icon={faPlus}
+                                types="button"
+                                defaultClass="btn btn-light ps-2"
+                                handleClick={() =>
+                                  dispatch(quantityIncrement(item))
+                                }
+                              />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </td>
-                    <td className="fw-semibold">$ {item.price.toFixed(2)}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
+                      </td>
+                      <td className="fw-semibold">$ {item.price.toFixed(2)}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          ) : (
+            <div className="p-5 d-flex justify-content-center align-items-center">
+              <div className="text-center">
+                <BaseIcon icon={faBoxOpen} classes="fs-1" />
+                <h3 className="mt-3">Cart is empty</h3>
+              </div>
+            </div>
+          )}
         </Col>
         <Col lg="4">
           <Card>

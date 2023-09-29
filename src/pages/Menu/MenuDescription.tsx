@@ -16,7 +16,7 @@ import { addToCart } from "../../store/features/orderingSyatemSlice";
 //models
 import { ProductDataModel } from "../../common/models";
 
-const MenuDescription:React.FC = () => {
+const MenuDescription: React.FC = () => {
   const [showCustomize, setShowCustomize] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [menuData, setMenuData] = useState<ProductDataModel>();
@@ -45,7 +45,7 @@ const MenuDescription:React.FC = () => {
 
   return (
     <>
-      {menuData && (
+      {menuData ? (
         <div>
           <SearchBar />
           <h4 className="d-sm-none text-capitalize title">{menuData.title}</h4>
@@ -115,6 +115,8 @@ const MenuDescription:React.FC = () => {
             </Toast>
           </ToastContainer>
         </div>
+      ) : (
+        <div>loading</div>
       )}
 
       {showCustomize && <MenuCustomization onClose={handleClose} />}
