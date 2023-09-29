@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
 import { Button, Card, Col, Row, Table } from "react-bootstrap";
-import axios from "axios";
 
 //custom components
 import BaseButton from "../../common/components/controls/BaseButton";
@@ -9,25 +7,16 @@ import BaseInput from "../../common/components/controls/BaseInput";
 //Icons
 import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
-interface ProductData {
-  image: string;
-  title: string;
-  ingredients: Array<string>;
-}
+//store
+import { useAppDispatch, useAppSelector } from "../../store";
+import {
+  quantityDecrement,
+  quantityIncrement,
+} from "../../store/features/orderingSyatemSlice";
 
 const Cart: React.FC = () => {
-  const [cartData, setCartData] = useState<Array<ProductData>>([]);
-
-  const getProducts = async () => {
-    await axios
-      .get("http://localhost:9000/cart")
-      .then((res) => setCartData(res.data))
-      .catch((error) => console.error("Error fetching data:", error));
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const addCartData = useAppSelector((store) => store.orederSystem.cart);
+  const dispatch = useAppDispatch();
 
   return (
     <>
@@ -42,8 +31,8 @@ const Cart: React.FC = () => {
               </tr>
             </thead>
             <tbody>
-              {cartData &&
-                cartData.map((item, index) => (
+              {addCartData &&
+                addCartData.map((item, index) => (
                   <tr className="align-middle add-to-cart-cart" key={index}>
                     <td>
                       <div className="d-md-flex align-items-center">
@@ -77,22 +66,28 @@ const Cart: React.FC = () => {
                               icon={faMinus}
                               types="button"
                               defaultClass="btn btn-light ps-2"
+                              handleClick={() =>
+                                dispatch(quantityDecrement(item))
+                              }
                             />
                           </div>
                           <div className="bg-warning text-white py-1 px-2 rounded-1">
-                            0
+                            {item.quantity}
                           </div>
                           <div>
                             <BaseButton
                               icon={faPlus}
                               types="button"
                               defaultClass="btn btn-light ps-2"
+                              handleClick={() =>
+                                dispatch(quantityIncrement(item))
+                              }
                             />
                           </div>
                         </div>
                       </div>
                     </td>
-                    <td className="fw-semibold">$45.00</td>
+                    <td className="fw-semibold">$ {item.price.toFixed(2)}</td>
                   </tr>
                 ))}
             </tbody>
@@ -125,7 +120,7 @@ const Cart: React.FC = () => {
               </Table>
               <div className="border border-1"></div>
               <Card.Text className="mt-2 mb-1 fs-6 text-muted">
-                Your order
+                Your Coupen
               </Card.Text>
               <div className="d-md-flex justify-content-between">
                 <div className="me-md-2 ">
@@ -137,16 +132,15 @@ const Cart: React.FC = () => {
                   />
                 </div>
                 <div className="">
-                  <Button
-                    variant="light"
-                    className="cart-apply-btn border mt-2 mt-md-0 w-100"
-                  >
-                    Apply
-                  </Button>
+                  <BaseButton
+                    name="Apply"
+                    types="button"
+                    variant="warning"
+                    defaultClass=" border mt-2 mt-md-0 w-100"
+                  />
                 </div>
               </div>
-              <div className="border border-1 my-3"></div>
-              <div>
+              <div className="mt-4">
                 <div className="d-flex justify-content-between">
                   <h6 className="text-muted">Subtotal</h6>
                   <p>$ 45.00</p>
@@ -164,7 +158,7 @@ const Cart: React.FC = () => {
               <BaseButton
                 types="button"
                 defaultClass="btn-success border-0 w-100"
-                name="continue to payment"
+                name="Continue to payment"
               />
             </Card.Body>
           </Card>

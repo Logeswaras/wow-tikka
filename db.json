@@ -4,46 +4,69 @@
   "profile": { "name": "typicode" },
   "products": [
     {
-      "image": "item-1",
+      "id": 1,
+      "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
       "title": "Rice Bowls",
-      "price": "$ 7.49",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. temporibus accusantium officia voluptate labore ",
+      "price": 7.49,
       "calories": "100",
-      "persons": "4"
+      "persons": "4",
+      "quantity": 1,
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
     },
     {
-      "image": "item-2",
+      "id": 2,
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
       "title": "Wheat wraps",
-      "price": "$ 7.49",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. temporibus accusantium officia voluptate labore ",
+      "price": 7.49,
       "calories": "100",
-      "persons": "4"
+      "persons": "4",
+      "quantity": 1,
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
     },
     {
-      "image": "item-3",
+      "id": 3,
+      "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
       "title": "Salad Bowl",
-      "price": "$ 7.49",
+      "price": 7.49,
       "calories": "100",
-      "persons": "4"
+      "persons": "4",
+      "quantity": 1,
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
     },
     {
-      "image": "item-4",
+      "id": 4,
+      "image": "https://images.pexels.com/photos/1640772/pexels-photo-1640772.jpeg?cs=srgb&dl=pexels-ella-olsson-1640772.jpg&fm=jpg",
       "title": "Sauces",
-      "price": "$ 7.49",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. temporibus accusantium officia voluptate labore ",
+      "price": 7.49,
       "calories": "100",
-      "persons": "4"
+      "persons": "4",
+      "quantity": 1,
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
     },
     {
-      "image": "item-5",
+      "id": 5,
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTstnwhn6hKOh_1_PX3bivFAghX-QKxV4bTxwvfft2AtD7cvVjFg42z-cDMHkixWzslfUQ&usqp=CAU",
       "title": "Sides",
-      "price": "$ 7.49",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. temporibus accusantium officia voluptate labore ",
+      "price": 7.49,
       "calories": "100",
-      "persons": "4"
+      "persons": "4",
+      "quantity": 1,
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
     },
     {
-      "image": "item-6",
+      "id": 5,
+      "image": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8NXx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80",
       "title": "Beverages",
-      "price": "$ 7.49",
+      "description": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. temporibus accusantium officia voluptate labore ",
+      "price": 7.49,
       "calories": "100",
-      "persons": "4"
+      "persons": "4",
+      "quantity": 1,
+      "ingredients": ["Rice", "Corn", "Onion", "Chicken balls"]
     }
   ],
   "cart": [
