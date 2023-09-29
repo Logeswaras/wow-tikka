@@ -54,7 +54,6 @@ export const OrderingSystemSlice = createSlice({
   },
 });
 
-export default OrderingSystemSlice.reducer;
 export const {
   addToCart,
   quantityIncrement,
