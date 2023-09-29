@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Row, Table, Image } from "react-bootstrap";
 
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
+import BaseButton from "../../common/components/controls/BaseButton";
 
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
-import BaseButton from "../../common/components/controls/BaseButton";
-import { useNavigate } from "react-router-dom";
 
 const Address: React.FC = () => {
   const [addressType, setAddressType] = useState<string>("");

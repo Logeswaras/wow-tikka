@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Row, Table } from "react-bootstrap";
 
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
+import BaseButton from "../../common/components/controls/BaseButton";
 
 //icons
 import { faCheck, faTruck, faTruckPickup } from "../../common/icons/Icons";
-import BaseButton from "../../common/components/controls/BaseButton";
-import { useNavigate } from "react-router-dom";
 
 const Delivery: React.FC = () => {
   const [deliveryType, setDeliveryType] = useState<string>("");

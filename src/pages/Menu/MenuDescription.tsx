@@ -1,14 +1,22 @@
 import { useEffect, useState } from "react";
 import { Badge, Card, Col, Row, Toast, ToastContainer } from "react-bootstrap";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+//custom components
 import BaseButton from "../../common/components/controls/BaseButton";
+
+//components
 import MenuCustomization from "./components/MenuCustomization";
 import SearchBar from "../../common/components/layout/SearchBar";
+
+//store
 import { useAppDispatch, useAppSelector } from "../../store";
 import { addToCart } from "../../store/features/orderingSyatemSlice";
+
+//models
 import { ProductDataModel } from "../../common/models";
 
-const MenuDescription = () => {
+const MenuDescription:React.FC = () => {
   const [showCustomize, setShowCustomize] = useState(false);
   const [showToast, setShowToast] = useState(false);
   const [menuData, setMenuData] = useState<ProductDataModel>();

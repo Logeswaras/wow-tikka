@@ -1,18 +1,23 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Table } from "react-bootstrap";
-import BaseInput from "../../common/components/controls/BaseInput";
-import BaseButton from "../../common/components/controls/BaseButton";
-import axios from "axios";
+import { useEffect, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { PaymentElement, Elements } from "@stripe/react-stripe-js";
+import { Button, Card, Col, Row, Table } from "react-bootstrap";
+
+//custom components
+import BaseInput from "../../common/components/controls/BaseInput";
+import BaseButton from "../../common/components/controls/BaseButton";
 import BaseIcon from "../../common/components/ui/BaseIcon";
+
+//icons
 import { faCreditCard } from "../../common/icons/Icons";
+
+import axios from "axios";
 
 const stripePromise = loadStripe(
   "pk_test_51NkRs9SB8vgU9050aqSsUtwU7TNmNGLoxSTRvqAFS9f93oIRnovKn3HnqHY4O5JtyOj7FTNdpX3qx1YmSElXi6vI00mTdtvqlN"
 );
 
-const Payment = () => {
+const Payment: React.FC = () => {
   const [clientSec, setClientSecret] = useState<null | any>(null);
 
   useEffect(() => {

@@ -1,13 +1,9 @@
-//react-bootstrap components
-import Image from "react-bootstrap/Image";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Container from "react-bootstrap/Container";
+import { Image, Col, Row, Container } from "react-bootstrap";
 
 //custom components
 import BaseButton from "../../../common/components/controls/BaseButton";
 
-const Banner = () => {
+const Banner:React.FC = () => {
   const banner = "banner-img";
   return (
     <>

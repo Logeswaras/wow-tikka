@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { Carousel } from "react-bootstrap";
 
-//react-bootstrap components
-import Carousel from "react-bootstrap/Carousel";
-
-const OrderOnline = () => {
+const OrderOnline:React.FC = () => {
   const chips = [
     {
       name: "Build your own",
