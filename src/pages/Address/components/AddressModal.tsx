@@ -1,158 +1,92 @@
 //custom components
 import BaseButton from "../../../common/components/controls/BaseButton";
-import BaseInput from "../../../common/components/controls/BaseInput";
-import { Card, Image, Modal, Container, Row, Col } from "react-bootstrap";
+import { Image, Modal, Row, Col } from "react-bootstrap";
 
 interface Props {
   show: boolean;
   handleModal: () => void;
+  handleSelected: (value: string) => void;
 }
 
-const AddressModal: React.FC<Props> = ({ show, handleModal }) => {
-  const newAddress = "addnewaddress";
-
+const AddressModal: React.FC<Props> = ({
+  show,
+  handleModal,
+  handleSelected,
+}) => {
   return (
-    // <Modal className="modal-lg" show={show} onHide={handleModal}>
-    //   <Modal.Header className="border-0" closeButton>
-    //     <Card.Title className="ps-3 pt-1">Add Your Address</Card.Title>
-    //   </Modal.Header>
-    //   <Modal.Body>
-    //     <div className="d-flex m-3 mt-0 mb-2">
-    //       <div className="p-3 d-flex justify-content-center align-items-center image-bg">
-    //         <div className="m-3 p-3 d-flex">
-    //           <Image
-    //             className="m-3 img-dim"
-    //             src={require(`../../../assets/Address/${newAddress}.svg`)}
-    //           />
-    //         </div>
-    //       </div>
-    //       <div className="w-100 ps-3 form-box">
-    //         <div className="ps-3">
-    //           <BaseInput
-    //             name="Name"
-    //             type="text"
-    //             placeholder="Enter your name"
-    //             inputBgColor="bg-light"
-    //           />
-    //         </div>
-    //         <div className="ps-3">
-    //           <BaseInput
-    //             name="MobileNumber"
-    //             type="number"
-    //             placeholder="Enter mobile number"
-    //             inputBgColor="bg-light"
-    //           />
-    //         </div>
-    //         <div className="ps-3">
-    //           <BaseInput
-    //             name="Address"
-    //             type="text"
-    //             placeholder="Enter full address"
-    //             inputBgColor="bg-light"
-    //           />
-    //         </div>
-    //         <div className="ps-3">
-    //           <BaseInput
-    //             name="Pincode"
-    //             type="number"
-    //             placeholder="Enter zip code"
-    //             inputBgColor="bg-light"
-    //           />
-    //         </div>
-    //         <div className="ps-3">
-    //           <BaseInput
-    //             name="Landmark"
-    //             type="text"
-    //             placeholder="Enter landmark if any"
-    //             inputBgColor="bg-light"
-    //           />
-    //         </div>
-    //         <div className="ps-3">
-    //           <BaseButton
-    //             defaultClass="w-100 bg-warning border-0"
-    //             types="button"
-    //             name="Save"
-    //             // handleSubmit={}
-    //           />
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </Modal.Body>
-    // </Modal>
-    <Modal className="modal-lg" show={show} onHide={handleModal}>
-      <Modal.Header className="border-0" closeButton>
-        <Card.Title className="ps-3 pt-1">Add Your Address</Card.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Container className="pb-3">
-          <Row>
-            {window.innerWidth > 600 && (
-              <Col
-                md={6}
-                className="d-flex justify-content-center align-items-center"
-              >
-                <div className="p-3 d-flex justify-content-center align-items-center image-bg">
-                  <div className="m-3 p-3 d-flex">
-                    <Image
-                      className="m-3 img-dim"
-                      src={require(`../../../assets/Address/${newAddress}.svg`)}
-                    />
-                  </div>
-                </div>
-              </Col>
-            )}
-            <Col xs={12} md={6} className="form-box">
-              <div className="ps-3">
-                <BaseInput
-                  name="Name"
-                  type="text"
-                  placeholder="Enter your name"
-                  inputBgColor="bg-light"
-                />
-              </div>
-              <div className="ps-3">
-                <BaseInput
-                  name="MobileNumber"
-                  type="number"
-                  placeholder="Enter mobile number"
-                  inputBgColor="bg-light"
-                />
-              </div>
-              <div className="ps-3">
-                <BaseInput
-                  name="Address"
-                  type="text"
-                  placeholder="Enter full address"
-                  inputBgColor="bg-light"
-                />
-              </div>
-              <div className="ps-3">
-                <BaseInput
-                  name="Pincode"
-                  type="number"
-                  placeholder="Enter zip code"
-                  inputBgColor="bg-light"
-                />
-              </div>
-              <div className="ps-3">
-                <BaseInput
-                  name="Landmark"
-                  type="text"
-                  placeholder="Enter landmark if any"
-                  inputBgColor="bg-light"
-                />
-              </div>
-              <div className="ps-3">
-                <BaseButton
-                  defaultClass="w-100 bg-warning border-0"
-                  types="button"
-                  name="Save"
-                  // handleSubmit={}
-                />
-              </div>
-            </Col>
-          </Row>
-        </Container>
+    <Modal
+      className="modal-lg"
+      show={show}
+      onHide={() => {
+        handleSelected("");
+        handleModal();
+      }}
+    >
+      <Modal.Body className="m-2">
+        <Row className="d-flex justify-content-evenly py-3">
+          <Col
+            md="5"
+            className="ms-2 me-2 d-flex justify-content-center align-items-center image-bg border-0 rounded"
+          >
+            <Image
+              className="tablet img-dim tablet-img-dim"
+              src={require(`../../../assets/Address/image 78.png`)}
+            />
+          </Col>
+          <Col xs={12} md={6} className="justify-self-center">
+            <div className="mb-4 d-flex justify-content-between align-items-center">
+              <h6 className="m-0 d-flex align-self-center">Add Your Address</h6>
+              <Modal.Header className="p-0" closeButton closeLabel="Close" />
+            </div>
+            <div>
+              <input
+                name="Name"
+                type="text"
+                placeholder="Enter your name"
+                className="px-3 py-3 border-0 rounded w-100 input-bg"
+              />
+            </div>
+            <div>
+              <input
+                name="MobileNumber"
+                type="number"
+                placeholder="Enter mobile number"
+                className="px-3 py-3 border-0 rounded w-100 input-bg"
+              />
+            </div>
+            <div>
+              <input
+                name="Address"
+                type="text"
+                placeholder="Enter full address"
+                className="px-3 py-3 border-0 rounded w-100 input-bg"
+              />
+            </div>
+            <div>
+              <input
+                name="Pincode"
+                type="number"
+                placeholder="Enter zip code"
+                className="px-3 py-3 border-0 rounded w-100 input-bg"
+              />
+            </div>
+            <div>
+              <input
+                name="Landmark"
+                type="text"
+                placeholder="Enter landmark if any"
+                className="px-3 py-3 border-0 rounded w-100 input-bg"
+              />
+            </div>
+            <div>
+              <BaseButton
+                defaultClass="px-4 py-3 w-100 button-bg border-0 d-flex justify-content-center align-items-center"
+                types="button"
+                name="Save"
+              />
+            </div>
+          </Col>
+        </Row>
       </Modal.Body>
     </Modal>
   );

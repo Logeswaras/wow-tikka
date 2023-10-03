@@ -9,4 +9,5 @@ export {
   faEdit,
   faTrash,
   faCirclePlus,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
