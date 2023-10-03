@@ -41,7 +41,7 @@ const MenuDescription: React.FC = () => {
 
   useEffect(() => {
     setMenuData(selector);
-  }, []);
+  }, [selector]);
 
   return (
     <>
@@ -65,14 +65,14 @@ const MenuDescription: React.FC = () => {
                   <Card.Text>{menuData.description}</Card.Text>
                   <Row>
                     <Col className="mt-2">
-                      <h5>$ {menuData.price}</h5>
+                      <h5>$ {menuData.price.toFixed(2)}</h5>
                     </Col>
                     <Col className="mt-2">
                       <h6>{menuData.calories}cal</h6>
                     </Col>
                     <Col>
                       <BaseButton
-                        defaultClass="customize-button border-0"
+                        defaultClass="customize-button border-0 rounded-1"
                         name="Customize"
                         handleClick={handleShow}
                       />
@@ -88,17 +88,17 @@ const MenuDescription: React.FC = () => {
               </Row>
             </Card.Body>
           </Card>
-          <Row className="menu-details">
+          <Row className="menu-details g-0">
             <Col md={{ span: 4, offset: 2 }}>
               <h5 className="text-capitalize">{menuData.title}</h5>
               <p>Ricebase with carrot mid & onion toppings</p>
             </Col>
             <Col md={{ span: 4, offset: 2 }}>
               <div className="d-flex mt-3">
-                <h5 className="mt-2">$ {menuData.price}</h5>
+                <h5 className="mt-2">$ {menuData.price.toFixed(2)}</h5>
 
                 <BaseButton
-                  defaultClass="cart-button border-0"
+                  defaultClass="cart-button border-0 rounded-1"
                   name="Add to cart"
                   handleClick={() => handleShowToast(menuData)}
                 />

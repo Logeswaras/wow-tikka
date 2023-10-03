@@ -30,7 +30,7 @@ const button: React.FC<IProps> = ({
         id={id}
         type={types}
         variant={variant}
-        className={`rounded-1 ${defaultClass}`}
+        className={defaultClass}
         onClick={handleClick}
         onSubmit={handleSubmit}
       >

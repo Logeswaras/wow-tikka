@@ -9,7 +9,11 @@ export interface AddCardModel {
   quantity: number;
   ingredients: Array<string>;
 }
-
+export interface AddCustomised {
+  image: string;
+  price: number;
+  name: string;
+}
 export class MenuDescriptionModel {
   id: number;
   image: string;

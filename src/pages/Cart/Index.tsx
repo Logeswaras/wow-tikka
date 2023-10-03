@@ -69,7 +69,7 @@ const Cart: React.FC = () => {
                               <BaseButton
                                 icon={faMinus}
                                 types="button"
-                                defaultClass="btn btn-light ps-2"
+                                defaultClass="btn btn-light ps-2 rounded-0"
                                 handleClick={() =>
                                   dispatch(quantityDecrement(item))
                                 }
@@ -82,7 +82,7 @@ const Cart: React.FC = () => {
                               <BaseButton
                                 icon={faPlus}
                                 types="button"
-                                defaultClass="btn btn-light ps-2"
+                                defaultClass="btn btn-light ps-2 rounded-0"
                                 handleClick={() =>
                                   dispatch(quantityIncrement(item))
                                 }

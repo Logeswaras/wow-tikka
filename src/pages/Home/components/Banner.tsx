@@ -19,7 +19,7 @@ const Banner:React.FC = () => {
           <div className="text-center my-4">
             <BaseButton
               types="button"
-              defaultClass="px-4"
+              defaultClass="px-4 rounded-1"
               variant="outline-light"
               name="Order Online"
             />

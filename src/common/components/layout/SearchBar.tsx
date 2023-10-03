@@ -24,7 +24,7 @@ const SearchBar = () => {
         </Col>
         <Col md={2} sm={12}>
           <div className="search-button">
-            <BaseButton defaultClass="btn-success" name="Search" />
+            <BaseButton defaultClass="btn-success rounded-1" name="Search" />
           </div>
         </Col>
       </Row>

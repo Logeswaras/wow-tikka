@@ -148,7 +148,7 @@ const Delivery: React.FC = () => {
               </div>
               <BaseButton
                 types="button"
-                defaultClass="btn-success border-0 w-100"
+                defaultClass="btn-success border-0 w-100 rounded-1"
                 name="Continue to payment"
                 handleClick={() => navigate("/address")}
               />

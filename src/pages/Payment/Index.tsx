@@ -67,7 +67,7 @@ const Payment: React.FC = () => {
                     <BaseButton
                       types="submit"
                       name="Pay now & Place order"
-                      defaultClass="btn btn-success px-3 py-2 w-50"
+                      defaultClass="btn btn-success px-3 py-2 w-50 rounded-1"
                     />
                   </div>
                 </form>

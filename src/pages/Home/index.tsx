@@ -125,27 +125,27 @@ const Home: React.FC = () => {
                       <div className="d-flex justify-content-between mb-2">
                         <Card.Title>{card.title}</Card.Title>
                         <BaseButton
-                          defaultClass="btn-sm btn-light home-customize"
+                          defaultClass="home-customize rounded-1"
                           name="Customize"
+                          variant="outline-warning"
                           handleClick={handleShow}
                         />
                       </div>
 
-                      <Card.Text>
-                        This is a longer card with supporting text below as a
-                        natural lead-in to additional content. This content is a
-                        little bit longer.
-                      </Card.Text>
+                      <Card.Text>{card.description}</Card.Text>
 
-                      <div className="d-flex justify-content-between mb-2">
-                        <div className="d-flex">
-                          <p className="fw-semibold">{card.price} </p>
-                          <p className="fw-light">/{card.calories} Calories</p>
+                      <div className="d-flex justify-content-between align-items-center">
+                        <div className="d-flex ">
+                          <p className="fw-semibold mb-0">$ {card.price} </p>
+                          <p className="fw-light mb-0">
+                            /{card.calories} Calories
+                          </p>
                         </div>
 
                         <BaseButton
-                          defaultClass="border-0 add"
-                          name="Add"
+                          defaultClass="border-0 add rounded-1"
+                          variant="success"
+                          name="Add To Cart"
                           handleClick={() => dispatch(addToCart(card))}
                         />
                       </div>
