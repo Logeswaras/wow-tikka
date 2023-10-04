@@ -54,7 +54,7 @@ const BaseInput: React.FC<TextInputProps> = ({
         )}
 
         {/* {label && <label className={`form-label ${labelClass}`}>{label}</label>} */}
-        <div className={`form-group  ${inputIcon && "icon"} input-material`}>
+        <div className={`form-group  ${inputIcon && "icon"} `}>
           {inputIcon ? (
             <span className="form-control-feedback">
               <BaseIcon icon={inputIcon} classes={iconClass} />

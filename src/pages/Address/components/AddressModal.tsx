@@ -1,6 +1,7 @@
 //custom components
 import BaseButton from "../../../common/components/controls/BaseButton";
 import { Image, Modal, Row, Col } from "react-bootstrap";
+import BaseInput from "../../../common/components/controls/BaseInput";
 
 interface Props {
   show: boolean;
@@ -25,62 +26,62 @@ const AddressModal: React.FC<Props> = ({
       <Modal.Body className="m-2">
         <Row className="d-flex justify-content-evenly py-3">
           <Col
-            md="5"
-            className="ms-2 me-2 d-flex justify-content-center align-items-center image-bg border-0 rounded"
+            lg="5"
+            className="ms-2 me-2 d-flex justify-content-center align-items-center image-bg border-0 rounded-1"
           >
             <Image
-              className="tablet img-dim tablet-img-dim"
+              className="tablet img-dim"
               src={require(`../../../assets/Address/image 78.png`)}
             />
           </Col>
-          <Col xs={12} md={6} className="justify-self-center">
+          <Col xs={12} lg={6} className="justify-self-center">
             <div className="mb-4 d-flex justify-content-between align-items-center">
               <h6 className="m-0 d-flex align-self-center">Add Your Address</h6>
               <Modal.Header className="p-0" closeButton closeLabel="Close" />
             </div>
-            <div>
-              <input
+            <div className="mb-4">
+              <BaseInput
                 name="Name"
                 type="text"
                 placeholder="Enter your name"
-                className="px-3 py-3 border-0 rounded w-100 input-bg"
+                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
               />
             </div>
-            <div>
-              <input
+            <div className="mb-4">
+              <BaseInput
                 name="MobileNumber"
                 type="number"
                 placeholder="Enter mobile number"
-                className="px-3 py-3 border-0 rounded w-100 input-bg"
+                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
               />
             </div>
-            <div>
-              <input
+            <div className="mb-4">
+              <BaseInput
                 name="Address"
                 type="text"
                 placeholder="Enter full address"
-                className="px-3 py-3 border-0 rounded w-100 input-bg"
+                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
               />
             </div>
-            <div>
-              <input
+            <div className="mb-4">
+              <BaseInput
                 name="Pincode"
                 type="number"
                 placeholder="Enter zip code"
-                className="px-3 py-3 border-0 rounded w-100 input-bg"
+                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
               />
             </div>
-            <div>
-              <input
+            <div className="mb-4">
+              <BaseInput
                 name="Landmark"
                 type="text"
                 placeholder="Enter landmark if any"
-                className="px-3 py-3 border-0 rounded w-100 input-bg"
+                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
               />
             </div>
             <div>
               <BaseButton
-                defaultClass="px-4 py-3 w-100 button-bg border-0 d-flex justify-content-center align-items-center"
+                defaultClass="w-100 button-bg border-0"
                 types="button"
                 name="Save"
               />
