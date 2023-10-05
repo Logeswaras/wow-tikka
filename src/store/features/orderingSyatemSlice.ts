@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 //models
-import { AddCardModel, MenuDescriptionModel } from "./models";
+import { AddCardModel, AddCustomised, MenuDescriptionModel } from "./models";
 
 interface IOrderingSyatem {
   cart: AddCardModel[];
@@ -51,13 +51,22 @@ export const OrderingSystemSlice = createSlice({
     handleCardDescription: (state, action: PayloadAction<AddCardModel>) => {
       state.menuDescription = action.payload;
     },
+    addCustomised: (state, action: PayloadAction<AddCustomised>) => {
+      const existingItem = state.menuDescription.ingredients.find(
+        (item) => item === action.payload.name
+      );
+      if (!existingItem) {
+        state.menuDescription.ingredients.push(action.payload.name);
+        state.menuDescription.price += action.payload.price;
+      }
+    },
   },
 });
 
-export default OrderingSystemSlice.reducer;
 export const {
   addToCart,
   quantityIncrement,
   quantityDecrement,
   handleCardDescription,
+  addCustomised,
 } = OrderingSystemSlice.actions;

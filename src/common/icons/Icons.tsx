@@ -9,5 +9,8 @@ export {
   faEdit,
   faTrash,
   faCirclePlus,
-  faCreditCard
+  faCreditCard,
+  faBoxOpen,
+  faMinus,
+  faPlus,
 } from "@fortawesome/free-solid-svg-icons";

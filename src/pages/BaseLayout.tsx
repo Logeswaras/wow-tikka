@@ -1,11 +1,12 @@
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+
+//components
 import NavBar from "../common/components/layout/NavBar";
 import StickyHeader from "../common/components/layout/StickyHeader";
 import SearchBar from "../common/components/layout/SearchBar";
 
 const BaseLayout: React.FC = () => {
   const location = useLocation();
-  const { menu } = useParams();
   return (
     <>
       <div className="">

@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Row, Table, Image } from "react-bootstrap";
 
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
+import BaseButton from "../../common/components/controls/BaseButton";
 
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
-import BaseButton from "../../common/components/controls/BaseButton";
-import { useNavigate } from "react-router-dom";
 
 const Address: React.FC = () => {
   const [addressType, setAddressType] = useState<string>("");
@@ -60,13 +60,13 @@ const Address: React.FC = () => {
                   <div className="d-flex justify-content-between">
                     <BaseButton
                       types="button"
-                      defaultClass="btn-light"
+                      defaultClass="btn-light rounded-1"
                       name="Edit"
                       icon={faEdit}
                     />
                     <BaseButton
                       types="button"
-                      defaultClass="btn-light"
+                      defaultClass="btn-light rounded-1"
                       name="Delete"
                       icon={faTrash}
                     />
@@ -163,7 +163,7 @@ const Address: React.FC = () => {
               </div>
               <BaseButton
                 types="button"
-                defaultClass="btn-success border-0 w-100"
+                defaultClass="btn-success border-0 w-100 rounded-1"
                 name="Continue to payment"
                 handleClick={() => navigate("/payment")}
               />
