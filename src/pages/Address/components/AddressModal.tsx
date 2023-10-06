@@ -2,25 +2,54 @@
 import BaseButton from "../../../common/components/controls/BaseButton";
 import { Image, Modal, Row, Col } from "react-bootstrap";
 import BaseInput from "../../../common/components/controls/BaseInput";
+import { useState } from "react";
 
 interface Props {
-  show: boolean;
-  handleModal: () => void;
+  modalShow: boolean;
+  action: string;
+  handleModal: (action: string) => void;
   handleSelected: (value: string) => void;
+  updateUserInfo: (newUserInfo: any) => void;
 }
 
 const AddressModal: React.FC<Props> = ({
-  show,
+  modalShow,
+  action,
   handleModal,
   handleSelected,
+  updateUserInfo,
 }) => {
+  const [name, setName] = useState<string>();
+  const [mobileNumber, setMobileNumber] = useState<number>();
+  const [address, setAddress] = useState<string>();
+  const [pincode, setPincode] = useState<number>();
+  const [landmark, setLandmark] = useState<string>();
+
+  const handleSave = () => {
+    // Get user info from input fields
+    const newUserInfo = {
+      name: name,
+      mobileNumber: mobileNumber,
+      address: address,
+      pincode: pincode,
+      landmark: landmark,
+      // Add more fields as needed
+    };
+
+    // Call the updateUserInfo function to send user info to Address component
+    updateUserInfo(newUserInfo);
+
+    // Close the modal
+    handleModal("");
+  };
+
   return (
     <Modal
       className="modal-lg"
-      show={show}
+      show={modalShow}
       onHide={() => {
-        handleSelected("");
-        handleModal();
+        handleModal("");
+        action !== "Edit" && handleSelected("");
       }}
     >
       <Modal.Body className="m-2">
@@ -36,8 +65,14 @@ const AddressModal: React.FC<Props> = ({
           </Col>
           <Col xs={12} lg={6} className="justify-self-center">
             <div className="mb-4 d-flex justify-content-between align-items-center">
-              <h6 className="m-0 d-flex align-self-center">Add Your Address</h6>
-              <Modal.Header className="p-0" closeButton closeLabel="Close" />
+              <h6 className="m-0 d-flex align-self-center">
+                {action} Your Address
+              </h6>
+              <Modal.Header
+                className="p-0 border-0"
+                closeButton
+                closeLabel="Close"
+              />
             </div>
             <div className="mb-4">
               <BaseInput
@@ -45,6 +80,8 @@ const AddressModal: React.FC<Props> = ({
                 type="text"
                 placeholder="Enter your name"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                value={name}
+                handleChange={(e: any) => setName(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -53,6 +90,8 @@ const AddressModal: React.FC<Props> = ({
                 type="number"
                 placeholder="Enter mobile number"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                value={mobileNumber}
+                handleChange={(e: any) => setMobileNumber(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -61,6 +100,8 @@ const AddressModal: React.FC<Props> = ({
                 type="text"
                 placeholder="Enter full address"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                value={address}
+                handleChange={(e: any) => setAddress(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -69,6 +110,8 @@ const AddressModal: React.FC<Props> = ({
                 type="number"
                 placeholder="Enter zip code"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                value={pincode}
+                handleChange={(e: any) => setPincode(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -77,6 +120,8 @@ const AddressModal: React.FC<Props> = ({
                 type="text"
                 placeholder="Enter landmark if any"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                value={landmark}
+                handleChange={(e: any) => setLandmark(e.target.value)}
               />
             </div>
             <div>
@@ -84,6 +129,7 @@ const AddressModal: React.FC<Props> = ({
                 defaultClass="w-100 button-bg border-0"
                 types="button"
                 name="Save"
+                handleClick={handleSave}
               />
             </div>
           </Col>

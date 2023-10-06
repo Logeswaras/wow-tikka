@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Card, Col, Row, Table, Image } from "react-bootstrap";
 
 //custom components
@@ -11,15 +11,38 @@ import AddressModal from "./components/AddressModal";
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
 
 const Address: React.FC = () => {
+  const [modalShow, setmodalShow] = useState<boolean>(false);
+  const [action, setAction] = useState<string>("");
+  const [isAddress, setIsAddress] = useState<boolean>(false);
   const [addressType, setAddressType] = useState<string>("");
-  const [show, setShow] = useState<boolean>(false);
+  const [selectedAddress, setSelectedAddress] = useState<boolean>(false);
+  const [userInfo, setUserInfo] = useState<object>({});
+  const [showUserInfoCard, setShowUserInfoCard] = useState<boolean>(false);
+
+  useEffect(() => {
+    // This code will execute when the userInfo state is updated
+    console.log(userInfo);
+
+    if (addressType === "Edit") {
+      setSelectedAddress(true);
+    }
+
+    if (showUserInfoCard === true) {
+      setIsAddress(true);
+    } else {
+      setSelectedAddress(false);
+      setIsAddress(false);
+    }
+  }, [userInfo, selectedAddress, isAddress, showUserInfoCard, addressType]);
 
   const newAddress = "addnewaddress";
 
-  const handleModal = () => setShow(!show);
+  const handleModal = (action: string) => {
+    setmodalShow(!modalShow);
+    setAction(action);
+  };
 
   const handleSelected = (value: string) => {
-    console.log("first");
     setAddressType(value);
   };
 
@@ -34,65 +57,107 @@ const Address: React.FC = () => {
       </div>
     </div>
   );
+
+  // const AddressError = (
+  //   selectedAddress === false ? (
+  //     <div className="mt-2">
+  //       <p className="m-0 text-danger">Address not provided.</p>
+  //       {isAddress === false ? (
+  //         <p className="m-0 text-danger">
+  //           Please provide your address details
+  //         </p>
+  //       ) : (
+  //         <p className="m-0 text-danger">
+  //           Select your default address or add a new address
+  //         </p>
+  //       )}
+  //     </div>
+  //   ) : (
+  //     <div></div>
+  //   )}
+  // )
+
+  const updateUserInfo = (newUserInfo: object) => {
+    setUserInfo(newUserInfo);
+    setShowUserInfoCard(true);
+    setIsAddress(true);
+    console.log(userInfo);
+  };
+
+  const handleContinueToPayment = () => {
+    if (addressType === "Edit") {
+      setSelectedAddress(true);
+    }
+    // Add any other logic for continuing to payment
+  };
+
   return (
     <>
+      {console.log(selectedAddress)}
       <Row className="px-5 mt-3 mb-2 g-0">
         <Col lg="8">
           <div className="row g-0 justify-content-center justify-content-lg-start">
-            <div
-              className="col-12 col-md-4 me-0 me-md-3 p-0 position-relative"
-              onClick={() => handleSelected("delivery")}
-              role="button"
-            >
+            {showUserInfoCard === true ? (
               <div
-                className={`border rounded-1 ${
-                  addressType === "delivery" &&
-                  "border-success bg-success-light"
+                className={`col-12 col-md-4 me-0 me-md-3 p-0 position-relative border rounded-1 ${
+                  addressType === "Edit" && "border-success bg-success-light"
                 }`}
+                onClick={() => {
+                  handleSelected("Edit");
+                  setSelectedAddress(true);
+                  console.log(selectedAddress);
+                }}
+                role="button"
               >
-                {addressType === "delivery" ? (
-                  selectedAddressType
-                ) : (
-                  <div className="pt-5"></div>
-                )}
-                <div className="ps-5 pe-5 pb-3 text-muted">
-                  <h6 className="mt-2 text-dark">Address -1</h6>
-                  <p>1/234 Movin,palakodu TK, Dharmapuri Dt Pin -636810</p>
-                  <div className="d-flex justify-content-between">
-                    <BaseButton
-                      types="button"
-                      defaultClass="btn-light"
-                      name="Edit"
-                      icon={faEdit}
-                    />
-                    <BaseButton
-                      types="button"
-                      defaultClass="btn-light"
-                      name="Delete"
-                      icon={faTrash}
-                    />
+                <div>
+                  {addressType === "Edit" ? (
+                    selectedAddressType
+                  ) : (
+                    <div className="pt-5"></div>
+                  )}
+                  <div className="ps-5 pe-5 pb-3 text-muted">
+                    {/* <h6 className="mt-2 text-dark">Address -1</h6> */}
+                    <p>1/234 Movin,palakodu TK, Dharmapuri Dt Pin -636810</p>
+                    <div className="d-flex justify-content-between">
+                      <BaseButton
+                        types="button"
+                        defaultClass="btn-light"
+                        name="Edit"
+                        icon={faEdit}
+                        handleClick={() => {
+                          handleSelected("Edit");
+                          handleModal("Edit");
+                        }}
+                      />
+                      <BaseButton
+                        types="button"
+                        defaultClass="btn-light"
+                        name="Delete"
+                        icon={faTrash}
+                        handleClick={() => {
+                          setShowUserInfoCard(false);
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div></div>
+            )}
             <div
-              className="col-12 col-md-4 me-0 me-md-3 mt-3 mt-md-0 p-0 position-relative"
+              className={
+                "col-12 col-md-4 me-0 me-md-3 mt-3 mt-md-0 p-0 position-relative border rounded-1"
+              }
               onClick={() => {
-                handleSelected("pickup");
-                handleModal();
+                handleSelected("New");
+                handleModal("Add");
               }}
               role="button"
             >
-              <div
-                className={`border rounded-1 ${
-                  addressType === "pickup" && "border-success bg-success-light"
-                }`}
-              >
-                {addressType === "pickup" ? (
-                  selectedAddressType
-                ) : (
-                  <div className="pt-5"></div>
-                )}
+              <div>
+                {/* {addressType === "New" ? (selectedAddressType) : ()} */}
+                <div className="pt-5"></div>
                 <div className="ps-5 pe-5 pb-3 text-muted text-center">
                   <Image
                     src={require(`../../assets/Address/${newAddress}.svg`)}
@@ -102,11 +167,28 @@ const Address: React.FC = () => {
               </div>
             </div>
             <AddressModal
-              show={show}
+              modalShow={modalShow}
+              action={action}
               handleModal={handleModal}
               handleSelected={handleSelected}
+              updateUserInfo={updateUserInfo}
             />
           </div>
+          {selectedAddress === false ? (
+            <div className="mt-2">
+              {isAddress === false ? (
+                <p className="m-0 text-danger">
+                  Address not provided. Please provide your address details.
+                </p>
+              ) : (
+                <p className="m-0 text-danger">
+                  Select your default address or add a new address.
+                </p>
+              )}
+            </div>
+          ) : (
+            <div></div>
+          )}
         </Col>
         <Col lg="4" className="mt-3 mt-lg-0">
           <Card className="m-0">
@@ -177,6 +259,7 @@ const Address: React.FC = () => {
                 types="button"
                 defaultClass="btn-success border-0 w-100"
                 name="continue to payment"
+                handleClick={handleContinueToPayment}
               />
             </Card.Body>
           </Card>
