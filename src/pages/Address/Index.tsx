@@ -20,11 +20,12 @@ const Address: React.FC = () => {
   const [showUserInfoCard, setShowUserInfoCard] = useState<boolean>(false);
 
   useEffect(() => {
-    // This code will execute when the userInfo state is updated
     console.log(userInfo);
 
     if (addressType === "Edit") {
       setSelectedAddress(true);
+    } else {
+      setSelectedAddress(false);
     }
 
     if (showUserInfoCard === true) {
@@ -85,15 +86,14 @@ const Address: React.FC = () => {
   };
 
   const handleContinueToPayment = () => {
-    if (addressType === "Edit") {
-      setSelectedAddress(true);
-    }
+    // if (addressType === "Edit") {
+    //   setSelectedAddress(true);
+    // }
     // Add any other logic for continuing to payment
   };
 
   return (
     <>
-      {console.log(selectedAddress)}
       <Row className="px-5 mt-3 mb-2 g-0">
         <Col lg="8">
           <div className="row g-0 justify-content-center justify-content-lg-start">
@@ -105,7 +105,6 @@ const Address: React.FC = () => {
                 onClick={() => {
                   handleSelected("Edit");
                   setSelectedAddress(true);
-                  console.log(selectedAddress);
                 }}
                 role="button"
               >

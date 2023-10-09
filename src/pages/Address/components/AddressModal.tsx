@@ -2,7 +2,7 @@
 import BaseButton from "../../../common/components/controls/BaseButton";
 import { Image, Modal, Row, Col } from "react-bootstrap";
 import BaseInput from "../../../common/components/controls/BaseInput";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 interface Props {
   modalShow: boolean;
@@ -25,6 +25,12 @@ const AddressModal: React.FC<Props> = ({
   const [pincode, setPincode] = useState<number>();
   const [landmark, setLandmark] = useState<string>();
 
+  const nameInputRef = useRef<HTMLInputElement | null>(null);
+  const mobileNumberInputRef = useRef<HTMLInputElement | null>(null);
+  const addressInputRef = useRef<HTMLInputElement | null>(null);
+  const pincodeInputRef = useRef<HTMLInputElement | null>(null);
+  const landmarkInputRef = useRef<HTMLInputElement | null>(null);
+
   const handleSave = () => {
     // Get user info from input fields
     const newUserInfo = {
@@ -38,6 +44,22 @@ const AddressModal: React.FC<Props> = ({
 
     // Call the updateUserInfo function to send user info to Address component
     updateUserInfo(newUserInfo);
+
+    if (nameInputRef.current) {
+      nameInputRef.current.value = "";
+    }
+    if (mobileNumberInputRef.current) {
+      mobileNumberInputRef.current.value = "";
+    }
+    if (addressInputRef.current) {
+      addressInputRef.current.value = "";
+    }
+    if (pincodeInputRef.current) {
+      pincodeInputRef.current.value = "";
+    }
+    if (landmarkInputRef.current) {
+      landmarkInputRef.current.value = "";
+    }
 
     // Close the modal
     handleModal("");
