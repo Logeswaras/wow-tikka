@@ -6,18 +6,20 @@ import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
 import BaseButton from "../../common/components/controls/BaseButton";
 import AddressModal from "./components/AddressModal";
+import { ExProps, AddressDetailsModel } from "./models";
 
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
 
 const Address: React.FC = () => {
-  const [modalShow, setmodalShow] = useState<boolean>(false);
-  const [action, setAction] = useState<string>("");
-  const [isAddress, setIsAddress] = useState<boolean>(false);
-  const [addressType, setAddressType] = useState<string>("");
-  const [selectedAddress, setSelectedAddress] = useState<boolean>(false);
-  const [userInfo, setUserInfo] = useState<object>({});
-  const [showUserInfoCard, setShowUserInfoCard] = useState<boolean>(false);
+  const [modalShow, setmodalShow] = useState<boolean>(false); // To show/hide the modal
+  const [action, setAction] = useState<string>(""); // To apply styles for the selected address
+  const [isAddress, setIsAddress] = useState<boolean>(false); // To check whether any address is available at all
+  const [addressType, setAddressType] = useState<string>(""); // To id the selected address
+  const [selectedAddress, setSelectedAddress] = useState<boolean>(false); // To know if an address is selected or not
+  const [userInfo, setUserInfo] = useState<AddressDetailsModel>(); // To store and manage the data from the modal
+  const [showUserInfoCard, setShowUserInfoCard] = useState<boolean>(false); // To show the new card with new data
+  const [onClickPay, setOnClickPay] = useState<boolean>(false); // To track clicks on the 'Continue to payment button'
 
   useEffect(() => {
     console.log(userInfo);
@@ -28,13 +30,20 @@ const Address: React.FC = () => {
       setSelectedAddress(false);
     }
 
-    if (showUserInfoCard === true) {
+    if (onClickPay === true && showUserInfoCard === true) {
       setIsAddress(true);
     } else {
       setSelectedAddress(false);
       setIsAddress(false);
     }
-  }, [userInfo, selectedAddress, isAddress, showUserInfoCard, addressType]);
+  }, [
+    userInfo,
+    selectedAddress,
+    isAddress,
+    showUserInfoCard,
+    addressType,
+    onClickPay,
+  ]);
 
   const newAddress = "addnewaddress";
 
@@ -78,18 +87,43 @@ const Address: React.FC = () => {
   //   )}
   // )
 
-  const updateUserInfo = (newUserInfo: object) => {
+  const updateUserInfo = (newUserInfo: AddressDetailsModel) => {
     setUserInfo(newUserInfo);
     setShowUserInfoCard(true);
     setIsAddress(true);
-    console.log(userInfo);
+    setAddressType("Edit");
+    // console.log(userInfo);
   };
 
   const handleContinueToPayment = () => {
+    setOnClickPay(true);
     // if (addressType === "Edit") {
     //   setSelectedAddress(true);
     // }
     // Add any other logic for continuing to payment
+  };
+
+  const Ex = ({ isAddress, onClickPay, addressType }: ExProps) => {
+    if (onClickPay) {
+      if (isAddress === false) {
+        // Display this message when the "Continue to payment" button is clicked and no address is provided
+        return (
+          <p className="m-0 text-danger">
+            Address not provided. Please provide your address details.
+          </p>
+        );
+      }
+    } else {
+      if (isAddress === true && addressType !== "Edit") {
+        // Display this message when there is an address but it's not selected
+        return (
+          <p className="m-0 text-danger">
+            Select your default address or add a new address.
+          </p>
+        );
+      }
+    }
+    return <p></p>;
   };
 
   return (
@@ -116,7 +150,16 @@ const Address: React.FC = () => {
                   )}
                   <div className="ps-5 pe-5 pb-3 text-muted">
                     {/* <h6 className="mt-2 text-dark">Address -1</h6> */}
-                    <p>1/234 Movin,palakodu TK, Dharmapuri Dt Pin -636810</p>
+                    <p className="mb-2 text-justify">{userInfo?.name}</p>
+                    <p className="m-0 text-justify">
+                      {userInfo?.address + " - " + userInfo?.pincode}
+                    </p>
+                    <p className="mb-2 text-justify">
+                      {"(opp " + userInfo?.landmark + ")."}
+                    </p>
+                    <p className="mb-2 text-justify">
+                      {"Mobile No.: " + userInfo?.mobileNumber}
+                    </p>
                     <div className="d-flex justify-content-between">
                       <BaseButton
                         types="button"
@@ -149,7 +192,7 @@ const Address: React.FC = () => {
                 "col-12 col-md-4 me-0 me-md-3 mt-3 mt-md-0 p-0 position-relative border rounded-1"
               }
               onClick={() => {
-                handleSelected("New");
+                handleSelected("");
                 handleModal("Add");
               }}
               role="button"
@@ -175,15 +218,22 @@ const Address: React.FC = () => {
           </div>
           {selectedAddress === false ? (
             <div className="mt-2">
-              {isAddress === false ? (
-                <p className="m-0 text-danger">
-                  Address not provided. Please provide your address details.
-                </p>
-              ) : (
-                <p className="m-0 text-danger">
-                  Select your default address or add a new address.
-                </p>
-              )}
+              {/* {onClickPay && isAddress === false ? (
+                  <p className="m-0 text-danger">
+                    Address not provided. Please provide your address details.
+                  </p>
+                ) : (
+                  <p className="m-0 text-danger">
+                    Select your default address or add a new address.
+                  </p>
+                )} */}
+              {
+                <Ex
+                  isAddress={isAddress}
+                  onClickPay={onClickPay}
+                  addressType={addressType}
+                />
+              }
             </div>
           ) : (
             <div></div>

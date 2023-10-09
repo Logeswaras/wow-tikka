@@ -2,6 +2,7 @@ import React from "react";
 import Form from "react-bootstrap/Form";
 
 import BaseIcon from "../ui/BaseIcon";
+import BaseErrors from "../ui/BaseErrors";
 
 // import BaseErrors from "../ui/BaseErrors";
 
@@ -23,6 +24,7 @@ interface TextInputProps {
   handleBlur?: any;
   handleChange?: any;
   formik?: any;
+  // ref?: React.RefObject<HTMLInputElement>;
 }
 
 const BaseInput: React.FC<TextInputProps> = ({
@@ -43,6 +45,7 @@ const BaseInput: React.FC<TextInputProps> = ({
   handleChange,
   handleBlur,
   formik,
+  // ref,
 }) => {
   return (
     <>
@@ -73,8 +76,9 @@ const BaseInput: React.FC<TextInputProps> = ({
             onBlur={handleBlur}
             aria-label="Username"
             aria-describedby="basic-addon1"
+            // ref={ref}
           />
-          {/* {formik && <BaseErrors name={name} formik={formik}></BaseErrors>} */}
+          {formik && <BaseErrors name={name} formik={formik}></BaseErrors>}
         </div>
       </div>
     </>

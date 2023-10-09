@@ -1,8 +1,12 @@
 //custom components
+import { useRef, useState } from "react";
+import { useFormik } from "formik";
+
 import BaseButton from "../../../common/components/controls/BaseButton";
 import { Image, Modal, Row, Col } from "react-bootstrap";
 import BaseInput from "../../../common/components/controls/BaseInput";
-import { useRef, useState } from "react";
+import { AddressDetailsModel } from "../models";
+import { AddressDetailsValidations } from "../validation/schema";
 
 interface Props {
   modalShow: boolean;
@@ -19,51 +23,39 @@ const AddressModal: React.FC<Props> = ({
   handleSelected,
   updateUserInfo,
 }) => {
-  const [name, setName] = useState<string>();
-  const [mobileNumber, setMobileNumber] = useState<number>();
-  const [address, setAddress] = useState<string>();
-  const [pincode, setPincode] = useState<number>();
-  const [landmark, setLandmark] = useState<string>();
-
-  const nameInputRef = useRef<HTMLInputElement | null>(null);
-  const mobileNumberInputRef = useRef<HTMLInputElement | null>(null);
-  const addressInputRef = useRef<HTMLInputElement | null>(null);
-  const pincodeInputRef = useRef<HTMLInputElement | null>(null);
-  const landmarkInputRef = useRef<HTMLInputElement | null>(null);
-
-  const handleSave = () => {
-    // Get user info from input fields
-    const newUserInfo = {
-      name: name,
-      mobileNumber: mobileNumber,
-      address: address,
-      pincode: pincode,
-      landmark: landmark,
-      // Add more fields as needed
-    };
-
-    // Call the updateUserInfo function to send user info to Address component
-    updateUserInfo(newUserInfo);
-
-    if (nameInputRef.current) {
-      nameInputRef.current.value = "";
-    }
-    if (mobileNumberInputRef.current) {
-      mobileNumberInputRef.current.value = "";
-    }
-    if (addressInputRef.current) {
-      addressInputRef.current.value = "";
-    }
-    if (pincodeInputRef.current) {
-      pincodeInputRef.current.value = "";
-    }
-    if (landmarkInputRef.current) {
-      landmarkInputRef.current.value = "";
-    }
-
-    // Close the modal
-    handleModal("");
+  const initialValues: AddressDetailsModel = {
+    name: "",
+    mobileNumber: "",
+    address: "",
+    pincode: "",
+    landmark: "",
   };
+
+  const onSubmit = () => {
+    if (Object.keys(formik.errors).length === 0) {
+      const newUserInfo: AddressDetailsModel = {
+        name: formik.values.name,
+        mobileNumber: formik.values.mobileNumber,
+        address: formik.values.address,
+        pincode: formik.values.pincode,
+        landmark: formik.values.landmark,
+      };
+
+      // Call the updateUserInfo function to send user info to Address component
+      updateUserInfo(newUserInfo);
+
+      // Close the modal
+      handleModal("");
+    }
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema: AddressDetailsValidations,
+    onSubmit,
+  });
+
+  // console.log(formik.errors);
 
   return (
     <Modal
@@ -98,52 +90,62 @@ const AddressModal: React.FC<Props> = ({
             </div>
             <div className="mb-4">
               <BaseInput
-                name="Name"
+                name="name"
                 type="text"
                 placeholder="Enter your name"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={name}
-                handleChange={(e: any) => setName(e.target.value)}
+                value={formik.values.name}
+                handleChange={formik.handleChange}
+                handleBlur={formik.handleBlur}
+                formik={formik}
               />
             </div>
             <div className="mb-4">
               <BaseInput
-                name="MobileNumber"
+                name="mobileNumber"
                 type="number"
                 placeholder="Enter mobile number"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={mobileNumber}
-                handleChange={(e: any) => setMobileNumber(e.target.value)}
+                value={formik.values.mobileNumber}
+                handleChange={formik.handleChange}
+                handleBlur={formik.handleBlur}
+                formik={formik}
               />
             </div>
             <div className="mb-4">
               <BaseInput
-                name="Address"
+                name="address"
                 type="text"
                 placeholder="Enter full address"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={address}
-                handleChange={(e: any) => setAddress(e.target.value)}
+                value={formik.values.address}
+                handleChange={formik.handleChange}
+                handleBlur={formik.handleBlur}
+                formik={formik}
               />
             </div>
             <div className="mb-4">
               <BaseInput
-                name="Pincode"
+                name="pincode"
                 type="number"
                 placeholder="Enter zip code"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={pincode}
-                handleChange={(e: any) => setPincode(e.target.value)}
+                value={formik.values.pincode}
+                handleChange={formik.handleChange}
+                handleBlur={formik.handleBlur}
+                formik={formik}
               />
             </div>
             <div className="mb-4">
               <BaseInput
-                name="Landmark"
+                name="landmark"
                 type="text"
                 placeholder="Enter landmark if any"
                 inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={landmark}
-                handleChange={(e: any) => setLandmark(e.target.value)}
+                value={formik.values.landmark}
+                handleChange={formik.handleChange}
+                handleBlur={formik.handleBlur}
+                formik={formik}
               />
             </div>
             <div>
@@ -151,7 +153,7 @@ const AddressModal: React.FC<Props> = ({
                 defaultClass="w-100 button-bg border-0"
                 types="button"
                 name="Save"
-                handleClick={handleSave}
+                handleClick={onSubmit}
               />
             </div>
           </Col>
