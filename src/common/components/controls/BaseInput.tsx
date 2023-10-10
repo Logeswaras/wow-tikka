@@ -4,8 +4,6 @@ import Form from "react-bootstrap/Form";
 import BaseIcon from "../ui/BaseIcon";
 import BaseErrors from "../ui/BaseErrors";
 
-// import BaseErrors from "../ui/BaseErrors";
-
 interface TextInputProps {
   name: string;
   value?: any;

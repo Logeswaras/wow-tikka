@@ -1,5 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Col, Row, Table, Image } from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Button,
+  Card,
+  Col,
+  Row,
+  Table,
+  Image,
+  OverlayTrigger,
+  Tooltip,
+} from "react-bootstrap";
 
 //custom components
 import BaseInput from "../../common/components/controls/BaseInput";
@@ -126,6 +135,7 @@ const Address: React.FC = () => {
     return <p></p>;
   };
 
+  const ref = useRef();
   return (
     <>
       <Row className="px-5 mt-3 mb-2 g-0">
@@ -160,21 +170,27 @@ const Address: React.FC = () => {
                     <p className="mb-2 text-justify">
                       {"Mobile No.: " + userInfo?.mobileNumber}
                     </p>
-                    <div className="d-flex justify-content-between">
+                    <div className="d-flex justify-content-end">
+                      {/* <OverlayTrigger
+                        placement="top"
+                        overlay={<Tooltip>Edit</Tooltip>}
+                      > */}
+                        <BaseButton
+                          types="button"
+                          defaultClass="btn-icon"
+                          variant="outline"
+                          icon={faEdit}
+                          handleClick={() => {
+                            handleSelected("Edit");
+                            handleModal("Edit");
+                          }}
+                        />
+                      {/* </OverlayTrigger> */}
+
                       <BaseButton
                         types="button"
-                        defaultClass="btn-light"
-                        name="Edit"
-                        icon={faEdit}
-                        handleClick={() => {
-                          handleSelected("Edit");
-                          handleModal("Edit");
-                        }}
-                      />
-                      <BaseButton
-                        types="button"
-                        defaultClass="btn-light"
-                        name="Delete"
+                        defaultClass="btn-icon"
+                        variant="outline"
                         icon={faTrash}
                         handleClick={() => {
                           setShowUserInfoCard(false);
@@ -239,6 +255,7 @@ const Address: React.FC = () => {
             <div></div>
           )}
         </Col>
+
         <Col lg="4" className="mt-3 mt-lg-0">
           <Card className="m-0">
             <Card.Body>
