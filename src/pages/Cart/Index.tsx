@@ -150,7 +150,7 @@ const Cart: React.FC = () => {
                     name="Apply"
                     types="button"
                     variant="warning"
-                    defaultClass=" border mt-2 mt-md-0 w-100"
+                    defaultClass="rounded-1 border mt-2 mt-md-0 w-100"
                   />
                 </div>
               </div>

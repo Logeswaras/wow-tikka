@@ -60,6 +60,12 @@ export const OrderingSystemSlice = createSlice({
         state.menuDescription.price += action.payload.price;
       }
     },
+    removeCustomised: (state, action: PayloadAction<string>) => {
+      state.menuDescription.ingredients =
+        state.menuDescription.ingredients.filter(
+          (item) => item !== action.payload
+        );
+    },
   },
 });
 
@@ -69,4 +75,5 @@ export const {
   quantityDecrement,
   handleCardDescription,
   addCustomised,
+  removeCustomised,
 } = OrderingSystemSlice.actions;

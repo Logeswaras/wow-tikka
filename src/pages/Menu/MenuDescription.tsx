@@ -11,10 +11,15 @@ import SearchBar from "../../common/components/layout/SearchBar";
 
 //store
 import { useAppDispatch, useAppSelector } from "../../store";
-import { addToCart } from "../../store/features/orderingSyatemSlice";
+import {
+  addToCart,
+  removeCustomised,
+} from "../../store/features/orderingSyatemSlice";
 
 //models
 import { ProductDataModel } from "../../common/models";
+import BaseIcon from "../../common/components/ui/BaseIcon";
+import { faXmark } from "../../common/icons/Icons";
 
 const MenuDescription: React.FC = () => {
   const [showCustomize, setShowCustomize] = useState(false);
@@ -33,7 +38,7 @@ const MenuDescription: React.FC = () => {
     setShowToast(true);
     setTimeout(() => {
       navigate("/");
-    }, 2000);
+    }, 8000);
   };
   const handleCloseToast = () => setShowToast(false);
   const handleShow = () => setShowCustomize(true);
@@ -72,7 +77,8 @@ const MenuDescription: React.FC = () => {
                     </Col>
                     <Col>
                       <BaseButton
-                        defaultClass="customize-button border-0 rounded-1"
+                        defaultClass="border-0 rounded-1"
+                        variant="warning"
                         name="Customize"
                         handleClick={handleShow}
                       />
@@ -82,6 +88,13 @@ const MenuDescription: React.FC = () => {
                   {menuData.ingredients.map((item, index) => (
                     <Badge bg="light" text="dark" key={index} className="me-2">
                       {item}
+                      <span
+                        role="button"
+                        className="ms-2"
+                        onClick={() => dispatch(removeCustomised(item))}
+                      >
+                        <BaseIcon icon={faXmark} />
+                      </span>
                     </Badge>
                   ))}
                 </Col>
@@ -98,14 +111,18 @@ const MenuDescription: React.FC = () => {
                 <h5 className="mt-2">$ {menuData.price.toFixed(2)}</h5>
 
                 <BaseButton
-                  defaultClass="cart-button border-0 rounded-1"
+                  defaultClass="border-0 rounded-1 ms-2"
+                  variant="success"
                   name="Add to cart"
-                  handleClick={() => handleShowToast(menuData)}
+                  handleClick={handleShowToast}
                 />
               </div>
             </Col>
           </Row>
-          <ToastContainer position="bottom-center">
+          <ToastContainer
+            position="bottom-end"
+            className="position-fixed mb-2 rounded-2"
+          >
             <Toast show={showToast} onClose={handleCloseToast}>
               <Toast.Header>
                 <strong className="m-auto py-3 fs-6 text-green">

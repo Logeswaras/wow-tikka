@@ -13,4 +13,5 @@ export {
   faBoxOpen,
   faMinus,
   faPlus,
+  faXmark
 } from "@fortawesome/free-solid-svg-icons";
