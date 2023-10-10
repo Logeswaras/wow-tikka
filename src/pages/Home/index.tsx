@@ -136,7 +136,7 @@ const Home: React.FC = () => {
 
                       <div className="d-md-flex justify-content-between mb-2">
                         <div className="d-flex">
-                          <p className="fw-semibold">{card.price} </p>
+                          <p className="fw-semibold">${card.price} </p>
                           <p className="fw-light">/{card.calories} Calories</p>
                         </div>
 

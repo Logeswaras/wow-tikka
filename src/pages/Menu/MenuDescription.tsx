@@ -32,7 +32,8 @@ const MenuDescription: React.FC = () => {
     dispatch(addToCart(item));
     setShowToast(true);
     setTimeout(() => {
-      navigate("/");
+      setShowToast(false);
+      // navigate("/");
     }, 2000);
   };
   const handleCloseToast = () => setShowToast(false);
