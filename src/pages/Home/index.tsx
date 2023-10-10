@@ -72,7 +72,7 @@ const Home: React.FC = () => {
           <Row xs={1} md={3} className="g-4">
             {cardData &&
               cardData.map((card, index) => (
-                <Col key={index} sm={12} md={6} lg={4} xl={4} xxl={3}>
+                <Col key={index} sm={12} md={6} lg={6} xl={4} xxl={3}>
                   <Card className="mb-5 bg-light border-0 item-card">
                     <Card.Img
                       src={card.image}
@@ -82,12 +82,12 @@ const Home: React.FC = () => {
                       onClick={() => handleMenuPage(card)}
                     />
                     <Card.Body>
-                      <div className="d-flex justify-content-between mb-2">
+                      <div className="d-md-flex justify-content-between mb-2">
                         <Card.Title>{card.title}</Card.Title>
                         <BaseButton
                           defaultClass="home-customize rounded-1"
                           name="Customize"
-                          variant="outline-warning"
+                          variant="light"
                           handleClick={handleShow}
                         />
                       </div>
@@ -101,7 +101,7 @@ const Home: React.FC = () => {
                         </div>
 
                         <BaseButton
-                          defaultClass="border-0 add rounded-1"
+                          defaultClass="border-0 rounded-1 add"
                           variant="success"
                           name="Add To Cart"
                           handleClick={() => dispatch(addToCart(card))}

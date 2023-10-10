@@ -1,5 +1,15 @@
 .btn-success {
-    background-color: #34b53a;
-    border: none;
+  background-color: #34b53a;
+  border: none;
 }
 
+.btn-warning {
+  background-color: #ffa114;
+  color: white;
+  border: none;
+}
+
+.btn-warning:hover {
+  background-color: #a76503;
+  color: white;
+}

@@ -60,14 +60,16 @@ const Address: React.FC = () => {
                   <div className="d-flex justify-content-between">
                     <BaseButton
                       types="button"
-                      defaultClass="btn-light rounded-1"
+                      defaultClass="btn-sm rounded-1"
+                      variant="body"
                       name="Edit"
                       icon={faEdit}
                     />
                     <BaseButton
                       types="button"
-                      defaultClass="btn-light rounded-1"
+                      defaultClass="btn-sm rounded-1"
                       name="Delete"
+                      variant="body"
                       icon={faTrash}
                     />
                   </div>
