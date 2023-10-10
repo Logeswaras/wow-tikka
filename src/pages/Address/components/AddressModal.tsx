@@ -1,5 +1,3 @@
-//custom components
-import { useRef, useState } from "react";
 import { useFormik } from "formik";
 
 import BaseButton from "../../../common/components/controls/BaseButton";
@@ -27,35 +25,27 @@ const AddressModal: React.FC<Props> = ({
     name: "",
     mobileNumber: "",
     address: "",
-    pincode: "",
+    zipcode: "",
     landmark: "",
-  };
-
-  const onSubmit = () => {
-    if (Object.keys(formik.errors).length === 0) {
-      const newUserInfo: AddressDetailsModel = {
-        name: formik.values.name,
-        mobileNumber: formik.values.mobileNumber,
-        address: formik.values.address,
-        pincode: formik.values.pincode,
-        landmark: formik.values.landmark,
-      };
-
-      // Call the updateUserInfo function to send user info to Address component
-      updateUserInfo(newUserInfo);
-
-      // Close the modal
-      handleModal("");
-    }
   };
 
   const formik = useFormik({
     initialValues,
     validationSchema: AddressDetailsValidations,
-    onSubmit,
+    onSubmit: (values, { resetForm }) => {
+      // Call the updateUserInfo function to send user info to Address component
+      updateUserInfo(formik.values);
+      console.log(values);
+
+      // Close the modal
+      handleModal("");
+
+      // Clear the form fields
+      resetForm();
+    },
   });
 
-  // console.log(formik.errors);
+  console.log(formik.errors);
 
   return (
     <Modal
@@ -88,74 +78,77 @@ const AddressModal: React.FC<Props> = ({
                 closeLabel="Close"
               />
             </div>
-            <div className="mb-4">
-              <BaseInput
-                name="name"
-                type="text"
-                placeholder="Enter your name"
-                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={formik.values.name}
-                handleChange={formik.handleChange}
-                handleBlur={formik.handleBlur}
-                formik={formik}
-              />
-            </div>
-            <div className="mb-4">
-              <BaseInput
-                name="mobileNumber"
-                type="number"
-                placeholder="Enter mobile number"
-                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={formik.values.mobileNumber}
-                handleChange={formik.handleChange}
-                handleBlur={formik.handleBlur}
-                formik={formik}
-              />
-            </div>
-            <div className="mb-4">
-              <BaseInput
-                name="address"
-                type="text"
-                placeholder="Enter full address"
-                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={formik.values.address}
-                handleChange={formik.handleChange}
-                handleBlur={formik.handleBlur}
-                formik={formik}
-              />
-            </div>
-            <div className="mb-4">
-              <BaseInput
-                name="pincode"
-                type="number"
-                placeholder="Enter zip code"
-                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={formik.values.pincode}
-                handleChange={formik.handleChange}
-                handleBlur={formik.handleBlur}
-                formik={formik}
-              />
-            </div>
-            <div className="mb-4">
-              <BaseInput
-                name="landmark"
-                type="text"
-                placeholder="Enter landmark if any"
-                inputClass="px-3 border-0 rounded-1 w-100 input-bg"
-                value={formik.values.landmark}
-                handleChange={formik.handleChange}
-                handleBlur={formik.handleBlur}
-                formik={formik}
-              />
-            </div>
-            <div>
-              <BaseButton
-                defaultClass="w-100 button-bg border-0"
-                types="button"
-                name="Save"
-                handleClick={onSubmit}
-              />
-            </div>
+            <form onSubmit={formik.handleSubmit}>
+              <div className="mb-4">
+                <BaseInput
+                  name="name"
+                  type="text"
+                  placeholder="Enter your name"
+                  inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                  value={formik.values.name}
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                  formik={formik}
+                />
+              </div>
+              <div className="mb-4">
+                <BaseInput
+                  name="mobileNumber"
+                  type="number"
+                  placeholder="Enter mobile number"
+                  inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                  value={formik.values.mobileNumber}
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                  // handleKeyDown={handleKeyDown}
+                  formik={formik}
+                />
+              </div>
+              <div className="mb-4">
+                <BaseInput
+                  name="address"
+                  type="text"
+                  placeholder="Enter full address"
+                  inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                  value={formik.values.address}
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                  formik={formik}
+                />
+              </div>
+              <div className="mb-4">
+                <BaseInput
+                  name="zipcode"
+                  type="number"
+                  placeholder="Enter zip code"
+                  inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                  value={formik.values.zipcode}
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                  formik={formik}
+                />
+              </div>
+              <div className="mb-4">
+                <BaseInput
+                  name="landmark"
+                  type="text"
+                  placeholder="Enter landmark if any"
+                  inputClass="px-3 border-0 rounded-1 w-100 input-bg"
+                  value={formik.values.landmark}
+                  handleChange={formik.handleChange}
+                  handleBlur={formik.handleBlur}
+                  formik={formik}
+                />
+              </div>
+              <div>
+                <BaseButton
+                  defaultClass="w-100 button-bg border-0"
+                  types="submit"
+                  name="Save"
+                  // handleClick={onSubmit}
+                />
+              </div>
+            </form>
           </Col>
         </Row>
       </Modal.Body>

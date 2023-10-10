@@ -23,6 +23,7 @@ interface TextInputProps {
   iconClass?: string;
   handleBlur?: any;
   handleChange?: any;
+  handleKeyDown?: any;
   formik?: any;
   // ref?: React.RefObject<HTMLInputElement>;
 }
@@ -44,6 +45,7 @@ const BaseInput: React.FC<TextInputProps> = ({
   size,
   handleChange,
   handleBlur,
+  handleKeyDown,
   formik,
   // ref,
 }) => {
@@ -74,6 +76,7 @@ const BaseInput: React.FC<TextInputProps> = ({
             className={`form-control ${inputClass} ${inputBgColor}`}
             onChange={handleChange}
             onBlur={handleBlur}
+            onKeyDown={handleKeyDown}
             aria-label="Username"
             aria-describedby="basic-addon1"
             // ref={ref}
