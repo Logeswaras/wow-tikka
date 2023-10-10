@@ -134,12 +134,10 @@ const Home: React.FC = () => {
 
                       <Card.Text>{card.description}</Card.Text>
 
-                      <div className="d-md-flex justify-content-between align-items-center">
-                        <div className="d-flex d-xl-block">
-                          <p className="fw-semibold mb-0">$ {card.price} </p>
-                          <p className="fw-light mb-0">
-                            /{card.calories} Calories
-                          </p>
+                      <div className="d-md-flex justify-content-between mb-2">
+                        <div className="d-flex">
+                          <p className="fw-semibold">${card.price} </p>
+                          <p className="fw-light">/{card.calories} Calories</p>
                         </div>
 
                         <BaseButton

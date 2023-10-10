@@ -6,7 +6,7 @@ import { AddCustomised } from "../../../store/features/models";
 import { AddCustomisedModel } from "../models";
 
 interface IProps {
-  onClose: any;
+  onClose?: any;
 }
 
 const MenuCustomization: React.FC<IProps> = ({ onClose }) => {
