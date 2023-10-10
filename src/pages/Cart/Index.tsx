@@ -1,11 +1,12 @@
 import { Card, Col, Row, Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 //custom components
 import BaseButton from "../../common/components/controls/BaseButton";
 import BaseInput from "../../common/components/controls/BaseInput";
 
 //Icons
-import { faMinus, faPlus, faBoxOpen } from "../../common/icons/Icons";
+import { faMinus, faPlus } from "../../common/icons/Icons";
 
 //store
 import { useAppDispatch, useAppSelector } from "../../store";
@@ -13,19 +14,20 @@ import {
   quantityDecrement,
   quantityIncrement,
 } from "../../store/features/orderingSyatemSlice";
-import { useNavigate } from "react-router-dom";
-import BaseIcon from "../../common/components/ui/BaseIcon";
+
 
 const Cart: React.FC = () => {
   const addCartData = useAppSelector((store) => store.orederSystem.cart);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
+  const emptyCart = "emptyCart";
+
   return (
     <>
-      <Row className="px-5 mt-3 g-0 justify-content-between">
-        <Col lg="7" sm="12">
-          {addCartData.length ? (
+      {addCartData.length ? (
+        <Row className="px-5 mt-3 g-0 justify-content-between">
+          <Col lg="7" sm="12">
             <Table responsive borderless className="cart-table">
               <thead>
                 <tr className="d-none d-md-table-row">
@@ -96,89 +98,97 @@ const Cart: React.FC = () => {
                   ))}
               </tbody>
             </Table>
-          ) : (
-            <div className="p-5 d-flex justify-content-center align-items-center">
-              <div className="text-center">
-                <BaseIcon icon={faBoxOpen} classes="fs-1" />
-                <h3 className="mt-3">Cart is empty</h3>
-              </div>
-            </div>
-          )}
-        </Col>
-        <Col lg="4">
-          <Card>
-            <Card.Body>
-              <Card.Title>Your order</Card.Title>
-              <Table responsive borderless className="mb-0">
-                <tbody>
-                  <tr>
-                    <td>
-                      <div className="d-md-flex align-items-center justify-content-between text-center text-md-start">
-                        <div className="d-md-flex">
-                          <img
-                            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
-                            alt="img"
-                            className="rounded-2"
-                            width={50}
-                          />
-                          <div className="ms-0 ms-md-2">
-                            <h6 className="mb-0">Rice bowls</h6>
-                            <span>*1</span>
+          </Col>
+          <Col lg="4">
+            <Card>
+              <Card.Body>
+                <Card.Title>Your order</Card.Title>
+                <Table responsive borderless className="mb-0">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div className="d-md-flex align-items-center justify-content-between text-center text-md-start">
+                          <div className="d-md-flex">
+                            <img
+                              src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
+                              alt="img"
+                              className="rounded-2"
+                              width={50}
+                            />
+                            <div className="ms-0 ms-md-2">
+                              <h6 className="mb-0">Rice bowls</h6>
+                              <span>*1</span>
+                            </div>
                           </div>
+                          <div className="fw-semibold">$ 45.00</div>
                         </div>
-                        <div className="fw-semibold">$ 45.00</div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </Table>
-              <div className="border border-1"></div>
-              <Card.Text className="mt-2 mb-1 fs-6 text-muted">
-                Your Coupen
-              </Card.Text>
-              <div className="d-md-flex justify-content-between">
-                <div className="me-md-2 ">
-                  <BaseInput
-                    type="text"
-                    name="Coupen"
-                    placeholder="Apply Coupen"
-                    inputBgColor="bg-light"
-                  />
+                      </td>
+                    </tr>
+                  </tbody>
+                </Table>
+                <div className="border border-1"></div>
+                <Card.Text className="mt-2 mb-1 fs-6 text-muted">
+                  Your Coupen
+                </Card.Text>
+                <div className="d-md-flex justify-content-between">
+                  <div className="me-md-2 ">
+                    <BaseInput
+                      type="text"
+                      name="Coupen"
+                      placeholder="Apply Coupen"
+                      inputBgColor="bg-light"
+                    />
+                  </div>
+                  <div className="">
+                    <BaseButton
+                      name="Apply"
+                      types="button"
+                      variant="warning"
+                      defaultClass=" border mt-2 mt-md-0 w-100"
+                    />
+                  </div>
                 </div>
-                <div className="">
-                  <BaseButton
-                    name="Apply"
-                    types="button"
-                    variant="warning"
-                    defaultClass=" border mt-2 mt-md-0 w-100"
-                  />
+                <div className="mt-4">
+                  <div className="d-flex justify-content-between">
+                    <h6 className="text-muted">Subtotal</h6>
+                    <p>$ 45.00</p>
+                  </div>
+                  <div className="d-flex justify-content-between">
+                    <h6 className="text-muted">Discount</h6>
+                    <p>$ 0</p>
+                  </div>
+                  <div className="border border-1 my-2"></div>
+                  <div className="d-flex justify-content-between">
+                    <h6 className="text-muted">Grand Total</h6>
+                    <p>$ 45.00</p>
+                  </div>
                 </div>
-              </div>
-              <div className="mt-4">
-                <div className="d-flex justify-content-between">
-                  <h6 className="text-muted">Subtotal</h6>
-                  <p>$ 45.00</p>
-                </div>
-                <div className="d-flex justify-content-between">
-                  <h6 className="text-muted">Discount</h6>
-                  <p>$ 0</p>
-                </div>
-                <div className="border border-1 my-2"></div>
-                <div className="d-flex justify-content-between">
-                  <h6 className="text-muted">Grand Total</h6>
-                  <p>$ 45.00</p>
-                </div>
-              </div>
-              <BaseButton
-                types="button"
-                defaultClass="btn-success border-0 w-100"
-                name="Continue to payment"
-                handleClick={() => navigate("/delivery")}
-              />
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
+                <BaseButton
+                  types="button"
+                  defaultClass="btn-success border-0 w-100"
+                  name="Continue to payment"
+                  handleClick={() => navigate("/delivery")}
+                />
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      ) : (
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <img
+            src={require(`../../assets/Cart/${emptyCart}.svg`)}
+            alt="cart"
+          />
+          <p className="fs-4 fw-light">Your cart is empty</p>
+
+          <BaseButton
+            defaultClass="mt-2 rounded-2"
+            variant="outline-secondary"
+            name="Browse your food"
+            handleClick={() => navigate("/")}
+          />
+        </div>
+      )}
     </>
   );
 };

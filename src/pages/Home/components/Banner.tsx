@@ -2,9 +2,17 @@ import { Image, Col, Row, Container } from "react-bootstrap";
 
 //custom components
 import BaseButton from "../../../common/components/controls/BaseButton";
+import { useNavigate } from "react-router";
 
-const Banner:React.FC = () => {
+interface IProps{
+  buttonClick?: any;
+}
+
+const Banner:React.FC<IProps> = ({ buttonClick }) => {
   const banner = "banner-img";
+  const navigate = useNavigate();
+  
+  
   return (
     <>
       <Container className="background-image" fluid>
@@ -22,6 +30,7 @@ const Banner:React.FC = () => {
               defaultClass="px-4 rounded-1"
               variant="outline-light"
               name="Order Online"
+              handleClick={buttonClick}
             />
           </div>
         </Row>

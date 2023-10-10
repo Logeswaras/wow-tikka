@@ -22,7 +22,7 @@ global.window = dom.window;
 Enzyme.configure({ adapter: new Adapter() });
 
 let wrapper: ReactWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
-let shallowWrapper: ShallowWrapper;
+let shallowWrapper: ShallowWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
 
 Given("Address can be added", () => {
   shallow(

@@ -25,7 +25,11 @@ global.window = dom.window;
 Enzyme.configure({ adapter: new Adapter() });
 
 let wrapper: ReactWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
-let shallowWrapper: ShallowWrapper;
+let shallowWrapper: ShallowWrapper<
+  any,
+  Readonly<{}>,
+  React.Component<{}, {}, any>
+>;
 
 Given("Shows the items added to cart", () => {
   shallow(
@@ -42,22 +46,25 @@ When("Plus and Minus button are clicked", () => {
       </Provider>
     </Router>
   );
+
+  //increment
   act(async () => {
     let btn = wrapper.find(".plus");
     if (btn) btn.simulate("click");
   });
 
+  //decrement
   act(async () => {
     let btn = wrapper.find(".minus");
     if (btn) btn.simulate("click");
   });
 });
 Then("Items is added and reduced respectively", () => {
-  mount(
-    <Router>
-      <Cart />
-    </Router>
-  );
+  const increment = wrapper.find("#qty-increment");
+  increment.exists();
+
+  const decrement = wrapper.find("#qty-decrement");
+  decrement.exists();
 });
 Then("Clicking {string} button in the cart page", (Continuetopayment) => {
   mount(
@@ -72,9 +79,5 @@ Then("Clicking {string} button in the cart page", (Continuetopayment) => {
   });
 });
 Then("Delivery types page is redirected", () => {
-  mount(
-    <Router>
-      <DeliveryType />
-    </Router>
-  );
+  wrapper.exists(<DeliveryType />);
 });

@@ -9,6 +9,7 @@ import Adapter from "@cfaester/enzyme-adapter-react-18";
 
 import DeliveryType from "../../src/pages/Delivery/Index";
 import Address from "../../src/pages/Address/Index";
+import { wrap } from "module";
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -22,7 +23,11 @@ global.window = dom.window;
 Enzyme.configure({ adapter: new Adapter() });
 
 let wrapper: ReactWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
-let shallowWrapper: ShallowWrapper;
+let shallowWrapper: ShallowWrapper<
+  any,
+  Readonly<{}>,
+  React.Component<{}, {}, any>
+>;
 
 Given("Delivery types are given", () => {
   shallow(
@@ -43,12 +48,6 @@ When("One of the delivery type is selected", () => {
   });
 });
 Then("{string} button is pressed", (Continuetopayment) => {
-  shallow(
-    <Router>
-      <DeliveryType />
-    </Router>
-  );
-
   act(async () => {
     let btn = wrapper.find(".Continuetopayment");
     if (btn) btn.simulate("click");
@@ -56,9 +55,5 @@ Then("{string} button is pressed", (Continuetopayment) => {
 });
 
 Then("Redirected to Address page", () => {
-  shallow(
-    <Router>
-      <Address />
-    </Router>
-  );
+  wrapper.exists(<Address />);
 });

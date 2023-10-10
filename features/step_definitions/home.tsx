@@ -30,7 +30,11 @@ global.window = dom.window;
 Enzyme.configure({ adapter: new Adapter() });
 
 let wrapper: ReactWrapper<any, Readonly<{}>, React.Component<{}, {}, any>>;
-let shallowWrapper: ShallowWrapper;
+let shallowWrapper: ShallowWrapper<
+  any,
+  Readonly<{}>,
+  React.Component<{}, {}, any>
+>;
 
 Given("Location is entered in the searchbox", () => {
   shallow(<Search></Search>);
@@ -47,11 +51,7 @@ When("{string} button is clicked", (search) => {
   });
 });
 Then("Menu respective of search is shown", () => {
-  shallow(
-    <Router>
-      <Search />
-    </Router>
-  );
+  shallowWrapper.exists(<OrderOnline />);
 });
 
 Given("Cart symbol is present at navbar", () => {
@@ -73,11 +73,7 @@ When("Cart symbol is clicked to view cart page", () => {
   });
 });
 Then("Cart page is shown", () => {
-  shallow(
-    <Router>
-      <Cart />
-    </Router>
-  );
+  shallowWrapper.exists(<Cart />);
 });
 
 Given("List of menus are shown", () => {
@@ -95,11 +91,7 @@ When("OnClick of the menu card opens menu-description page", () => {
   });
 });
 Then("Menu-description page is seen", () => {
-  shallow(
-    <Router>
-      <MenuDescription />
-    </Router>
-  );
+  shallowWrapper.exists(<MenuDescription />);
 });
 Then("OnClick of button {string}", (Customize) => {
   shallow(
@@ -114,11 +106,7 @@ Then("OnClick of button {string}", (Customize) => {
   });
 });
 Then("Shows Customize column at the right end", () => {
-  shallow(
-    <Router>
-      <MenuCustomization />
-    </Router>
-  );
+  shallowWrapper.exists(<MenuCustomization />);
 });
 Then("OnClick of {string} button", (AddToCart) => {
   shallow(
@@ -133,9 +121,7 @@ Then("OnClick of {string} button", (AddToCart) => {
   });
 });
 Then("Adds menu to the cart", () => {
-  shallow(
-    <Router>
-      <Cart />
-    </Router>
-  );
+ 
+  const add = wrapper.find(".cart-item");
+  add.exists(<Cart />);
 });

@@ -1,7 +1,12 @@
 import { NavLink } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
+import { useEffect, useRef } from "react";
 
-const OrderOnline:React.FC = () => {
+interface IProps {
+  scroll?: any;
+}
+
+const OrderOnline: React.FC<IProps> = ({ scroll }) => {
   const chips = [
     {
       name: "Build your own",
@@ -20,10 +25,20 @@ const OrderOnline:React.FC = () => {
       path: "/",
     },
   ];
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    if (scroll && containerRef.current) {
+      // Scroll to ComponentB
+      containerRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [scroll]);
   return (
     <>
       <div className="mt-5 mobile-chip">
         <h4>Order Online</h4>
+
         <Carousel
           indicators={false}
           data-bs-theme="dark"
@@ -32,7 +47,7 @@ const OrderOnline:React.FC = () => {
         >
           {chips.map((chip, index) => (
             <Carousel.Item key={index}>
-              <div className="text-center">
+              <div className="text-center" ref={containerRef}>
                 <NavLink
                   to={chip.path}
                   className="nav-link border rounded-3 d-inline-block px-3"
@@ -46,7 +61,7 @@ const OrderOnline:React.FC = () => {
       </div>
       <div className="mt-4 tablet-chip">
         <h4>Order Online</h4>
-        <div className="mt-3">
+        <div className="mt-3" ref={containerRef}>
           <NavLink
             to={"/"}
             className="nav-link border rounded-3 d-inline-block px-3 me-md-0 me-2"
