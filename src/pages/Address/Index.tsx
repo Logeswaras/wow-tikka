@@ -100,33 +100,7 @@ const Address: React.FC = () => {
     // Add any other logic for continuing to payment
   };
 
-<<<<<<< HEAD
-=======
-  const Ex = ({ isAddress, onClickPay, addressType }: ExProps) => {
-    if (onClickPay) {
-      if (isAddress === false) {
-        // Display this message when the "Continue to payment" button is clicked and no address is provided
-        return (
-          <p className="m-0 text-danger">
-            Address not provided. Please provide your address details.
-          </p>
-        );
-      }
-    } else {
-      if (isAddress === true && addressType !== "Edit") {
-        // Display this message when there is an address but it's not selected
-        return (
-          <p className="m-0 text-danger">
-            Select your default address or add a new address.
-          </p>
-        );
-      }
-    }
-    return <p></p>;
-  };
-
-  const ref = useRef();
->>>>>>> 4380e2737b64ccb0187106b271a5333c9fb52b9e
+  // const ref = useRef();
   return (
     <>
       <Row className="px-5 mt-3 mb-2 g-0">
@@ -166,16 +140,16 @@ const Address: React.FC = () => {
                         placement="top"
                         overlay={<Tooltip>Edit</Tooltip>}
                       > */}
-                        <BaseButton
-                          types="button"
-                          defaultClass="btn-icon"
-                          variant="outline"
-                          icon={faEdit}
-                          handleClick={() => {
-                            handleSelected("Edit");
-                            handleModal("Edit");
-                          }}
-                        />
+                      <BaseButton
+                        types="button"
+                        defaultClass="btn-icon"
+                        variant="outline"
+                        icon={faEdit}
+                        handleClick={() => {
+                          handleSelected("Edit");
+                          handleModal("Edit");
+                        }}
+                      />
                       {/* </OverlayTrigger> */}
 
                       <BaseButton
