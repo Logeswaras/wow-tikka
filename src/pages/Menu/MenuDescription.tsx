@@ -38,7 +38,6 @@ const MenuDescription: React.FC = () => {
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
-      // navigate("/");
     }, 2000);
   };
   const handleCloseToast = () => setShowToast(false);

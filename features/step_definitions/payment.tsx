@@ -7,8 +7,8 @@ import Enzyme, { ReactWrapper, ShallowWrapper, mount, shallow } from "enzyme";
 
 import Adapter from "@cfaester/enzyme-adapter-react-18";
 
-import DeliveryType from "../../src/pages/Delivery/Index";
-import Address from "../../src/pages/Address/Index";
+import Payment from "../../src/pages/Payment/Index";
+import SuccessPage from "../../src/pages/Address/Index";
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -28,31 +28,25 @@ let shallowWrapper: ShallowWrapper<
   React.Component<{}, {}, any>
 >;
 
-Given("Delivery types are given", () => {
+Given("Payment details are given", () => {
   shallow(
     <Router>
-      <DeliveryType />
+      <Payment />
     </Router>
   );
 });
-When("One of the delivery type is selected", () => {
+When("{string} button is clicked after giving payment details", (Continuetopayment) => {
   wrapper = mount(
     <Router>
-      <DeliveryType />
+      <Payment />
     </Router>
   );
-  act(async () => {
-    let btn = wrapper.find(".deliveryType");
-    if (btn) btn.simulate("click");
-  });
-});
-Then("{string} button is pressed", (Continuetopayment) => {
   act(async () => {
     let btn = wrapper.find(".Continuetopayment");
     if (btn) btn.simulate("click");
   });
 });
 
-Then("Redirected to Address page", () => {
-  wrapper.exists(<Address />);
+Then("After successful payment success message is shown", () => {
+  wrapper.exists(<SuccessPage />);
 });

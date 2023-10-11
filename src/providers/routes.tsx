@@ -11,7 +11,6 @@ const Delivery = React.lazy(() => import("../pages/Delivery/Index"));
 const Address = React.lazy(() => import("../pages/Address/Index"));
 const Payment = React.lazy(() => import("../pages/Payment/Index"));
 
-
 //route config
 const routes = [
   {

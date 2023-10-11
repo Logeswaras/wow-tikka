@@ -1,9 +1,11 @@
 import { Card, Col, Row, Table } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 //custom components
 import BaseButton from "../../common/components/controls/BaseButton";
 import BaseInput from "../../common/components/controls/BaseInput";
+import SignUp from "../SignUp";
 
 //Icons
 import { faMinus, faPlus } from "../../common/icons/Icons";
@@ -15,13 +17,21 @@ import {
   quantityIncrement,
 } from "../../store/features/orderingSyatemSlice";
 
-
 const Cart: React.FC = () => {
+  const [showSignUp, setShowSignUp] = useState(false);
+
   const addCartData = useAppSelector((store) => store.orederSystem.cart);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const emptyCart = "emptyCart";
+
+  const handleSignUp = () => {
+    setShowSignUp(true);
+    setTimeout(() => {
+      navigate("/delivery");
+    }, 2000);
+  };
 
   return (
     <>
@@ -167,7 +177,8 @@ const Cart: React.FC = () => {
                   types="button"
                   defaultClass="btn-success border-0 w-100"
                   name="Continue to payment"
-                  handleClick={() => navigate("/delivery")}
+                  handleClick={handleSignUp}
+                  // handleClick={() => navigate("/delivery")}
                 />
               </Card.Body>
             </Card>
@@ -175,10 +186,7 @@ const Cart: React.FC = () => {
         </Row>
       ) : (
         <div className="d-flex flex-column justify-content-center align-items-center">
-          <img
-            src={require(`../../assets/Cart/${emptyCart}.svg`)}
-            alt="cart"
-          />
+          <img src={require(`../../assets/Cart/${emptyCart}.svg`)} alt="cart" />
           <p className="fs-4 fw-light">Your cart is empty</p>
 
           <BaseButton
@@ -189,6 +197,7 @@ const Cart: React.FC = () => {
           />
         </div>
       )}
+      {showSignUp && <SignUp />}
     </>
   );
 };
