@@ -1,0 +1,18 @@
+.input-bg {
+  background-color: rgba(246, 246, 246, 1);
+}
+.image-bg {
+  background-color: rgba(226, 251, 215, 0.65);
+}
+.button-bg {
+  background: var(--orange-grndt, linear-gradient(180deg, #FFA831 0%, #FF9821 100%));
+}
+.img-dim {
+  width: 175px;
+  height: 175px;
+}
+@media (max-width: 1023px) {
+  .tablet {
+    display: none;
+  }
+}
