@@ -132,31 +132,61 @@ const Cart: React.FC = () => {
                           </div>
                           <div className="fw-semibold">$ 45.00</div>
                         </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <div className="border border-1"></div>
-                <Card.Text className="mt-2 mb-1 fs-6 text-muted">
-                  Your Coupen
-                </Card.Text>
-                <div className="d-md-flex justify-content-between">
-                  <div className="me-md-2 ">
-                    <BaseInput
-                      type="text"
-                      name="Coupen"
-                      placeholder="Apply Coupen"
-                      inputBgColor="bg-light"
-                    />
-                  </div>
-                  <div className="">
-                    <BaseButton
-                      name="Apply"
-                      types="button"
-                      variant="warning"
-                      defaultClass=" border mt-2 mt-md-0 w-100"
-                    />
-                  </div>
+                      </div>
+                    </td>
+                    <td className="fw-semibold">$ {item.price.toFixed(2)}</td>
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
+        </Col>
+        <Col lg="4">
+          <Card>
+            <Card.Body>
+              <Card.Title>Your order</Card.Title>
+              <Table responsive borderless className="mb-0">
+                <tbody>
+                  <tr>
+                    <td>
+                      <div className="d-md-flex align-items-center justify-content-between text-center text-md-start">
+                        <div className="d-md-flex">
+                          <img
+                            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8fA%3D%3D&w=1000&q=80"
+                            alt="img"
+                            className="rounded-2"
+                            width={50}
+                          />
+                          <div className="ms-0 ms-md-2">
+                            <h6 className="mb-0">Rice bowls</h6>
+                            <span>*1</span>
+                          </div>
+                        </div>
+                        <div className="fw-semibold">$ 45.00</div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </Table>
+              <div className="border border-1"></div>
+              <Card.Text className="mt-2 mb-1 fs-6 text-muted">
+                Your Coupen
+              </Card.Text>
+              <div className="d-md-flex justify-content-between">
+                <div className="me-md-2 ">
+                  <BaseInput
+                    type="text"
+                    name="Coupen"
+                    placeholder="Apply Coupen"
+                    inputBgColor="bg-light"
+                  />
+                </div>
+                <div className="">
+                  <BaseButton
+                    name="Apply"
+                    types="button"
+                    variant="warning"
+                    defaultClass=" border mt-2 mt-md-0 w-100"
+                  />
                 </div>
                 <div className="mt-4">
                   <div className="d-flex justify-content-between">

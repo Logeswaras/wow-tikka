@@ -1,6 +1,5 @@
 .form-control {
   padding-left: 2rem;
-  text-indent: 30px;
 }
 
 .form-control-feedback {
@@ -47,6 +46,7 @@
     background-color: transparent;
     padding-left: 5px;
     box-shadow: none;
+    text-indent: 30px;
 
     &:focus,
     &[value]:not([value=""]) {
