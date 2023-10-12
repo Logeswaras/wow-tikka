@@ -239,7 +239,7 @@ const Cart: React.FC = () => {
         </div>
       )}
 
-      {showSignUp && <SignUp handleClose={handleClose} />}
+      {showSignUp && <SignUp onClose={handleClose} />}
     </>
   );
 };

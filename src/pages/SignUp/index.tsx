@@ -1,10 +1,18 @@
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 
-const SignUp = () => {
-  const [show, setShow] = useState(true);
+interface IProps {
+  onClose?: any;
+}
 
-  const handleClose = () => setShow(false);
+const SignUp: React.FC<IProps> = ({ onClose }) => {
+  const [show, setShow] = useState(true);
+  const signup = "signup";
+  const handleClose = () => {
+    setShow(false);
+    onClose("close");
+  };
+
   const handleShow = () => setShow(true);
   return (
     <>
