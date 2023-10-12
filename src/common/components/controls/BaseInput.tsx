@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 
 import BaseIcon from "../ui/BaseIcon";
 import BaseErrors from "../ui/BaseErrors";
+import { InputGroup } from "react-bootstrap";
 
 interface TextInputProps {
   name: string;
@@ -22,10 +23,12 @@ interface TextInputProps {
   handleBlur?: any;
   handleChange?: any;
   formik?: any;
+  inputText?: any;
   // ref?: React.RefObject<HTMLInputElement>;
 }
 
 const BaseInput: React.FC<TextInputProps> = ({
+  inputText,
   inputIcon,
   iconClass,
   labelClass,
@@ -54,13 +57,14 @@ const BaseInput: React.FC<TextInputProps> = ({
           </Form.Label>
         )}
 
-        {/* {label && <label className={`form-label ${labelClass}`}>{label}</label>} */}
-        <div className={`form-group  ${inputIcon && "icon"} `}>
-          {inputIcon ? (
-            <span className="form-control-feedback">
-              <BaseIcon icon={inputIcon} classes={iconClass} />
-            </span>
-          ) : null}
+        <InputGroup className={`form-group  ${inputIcon && "icon"} `}>
+          {(inputIcon || inputText) && (
+            <InputGroup.Text>
+              {inputIcon && <BaseIcon icon={inputIcon} classes={iconClass} />}
+              {inputText && inputText}
+            </InputGroup.Text>
+          )}
+
           <Form.Control
             type={type}
             value={value}
@@ -76,8 +80,8 @@ const BaseInput: React.FC<TextInputProps> = ({
             aria-describedby="basic-addon1"
             // ref={ref}
           />
-          {formik && <BaseErrors name={name} formik={formik}></BaseErrors>}
-        </div>
+        </InputGroup>
+        {formik && <BaseErrors name={name} formik={formik}></BaseErrors>}
       </div>
     </>
   );

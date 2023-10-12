@@ -19,6 +19,7 @@ import { ExProps, AddressDetailsModel } from "./models";
 
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
+import { useNavigate } from "react-router";
 
 const Address: React.FC = () => {
   const [modalShow, setmodalShow] = useState<boolean>(false); // To show/hide the modal
