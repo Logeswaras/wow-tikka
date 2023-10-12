@@ -11,12 +11,12 @@ interface IProps {
 const SignUp: React.FC<IProps> = ({ onClose }) => {
   const [show, setShow] = useState(true);
   const signup = "signup";
-
   const handleClose = () => {
     setShow(false);
     onClose("close");
   };
 
+  const handleShow = () => setShow(true);
   return (
     <>
       <Modal show={show} onHide={handleClose}>

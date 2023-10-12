@@ -7,20 +7,18 @@ export const AddressDetailsValidations = Yup.object().shape({
     .required("Name is required"),
   mobileNumber: Yup
     .string()
-    .matches(/^\d+$/, 'Mobile number must contain only digits')
+    .matches(/^[0-9]*$/, 'Mobile number must contain only characters 0-9')
     .length(10, 'Mobile number must be exactly 10 digits long')
     .required("Mobile Number is required"),
   address: Yup
     .string()
     .min(10, "Address is too short")
     .required("Address is required"),
-  pincode: Yup
+  zipcode: Yup
     .string()
-    .matches(/^\d+$/, 'Pincode must contain only digits')
-    .length(6, 'Pincode must be exactly 6 digits long')
-    .required("Pincode is required"),
+    .matches(/^[0-9]*$/, 'Zipcode must contain only characters 0-9')
+    .length(5, 'Zipcode must be exactly 5 digits long')
+    .required("Zipcode is required"),
   landmark: Yup
-    .string()
-    .min(3, "Landmark is too short")
-    .required("Landmark is required"),
+    .string(),
 });

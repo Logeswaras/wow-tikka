@@ -15,7 +15,7 @@ import BaseInput from "../../common/components/controls/BaseInput";
 import BaseIcon from "../../common/components/ui/BaseIcon";
 import BaseButton from "../../common/components/controls/BaseButton";
 import AddressModal from "./components/AddressModal";
-import { ExProps, AddressDetailsModel } from "./models";
+import { AddressDetailsModel } from "./models";
 
 //icons
 import { faCheck, faEdit, faTrash } from "../../common/icons/Icons";
@@ -32,30 +32,19 @@ const Address: React.FC = () => {
   const [onClickPay, setOnClickPay] = useState<boolean>(false); // To track clicks on the 'Continue to payment button'
 
   useEffect(() => {
-    console.log(userInfo);
-
     if (addressType === "Edit") {
       setSelectedAddress(true);
     } else {
       setSelectedAddress(false);
     }
 
-    if (onClickPay === true && showUserInfoCard === true) {
+    if (showUserInfoCard === true) {
       setIsAddress(true);
     } else {
       setSelectedAddress(false);
       setIsAddress(false);
     }
-  }, [
-    userInfo,
-    selectedAddress,
-    isAddress,
-    showUserInfoCard,
-    addressType,
-    onClickPay,
-  ]);
-
-  const navigate = useNavigate();
+  }, [selectedAddress, isAddress, showUserInfoCard, addressType]);
 
   const newAddress = "addnewaddress";
 
@@ -80,31 +69,11 @@ const Address: React.FC = () => {
     </div>
   );
 
-  // const AddressError = (
-  //   selectedAddress === false ? (
-  //     <div className="mt-2">
-  //       <p className="m-0 text-danger">Address not provided.</p>
-  //       {isAddress === false ? (
-  //         <p className="m-0 text-danger">
-  //           Please provide your address details
-  //         </p>
-  //       ) : (
-  //         <p className="m-0 text-danger">
-  //           Select your default address or add a new address
-  //         </p>
-  //       )}
-  //     </div>
-  //   ) : (
-  //     <div></div>
-  //   )}
-  // )
-
   const updateUserInfo = (newUserInfo: AddressDetailsModel) => {
     setUserInfo(newUserInfo);
     setShowUserInfoCard(true);
     setIsAddress(true);
     setAddressType("Edit");
-    // console.log(userInfo);
   };
 
   const handleContinueToPayment = () => {
@@ -115,30 +84,7 @@ const Address: React.FC = () => {
     // Add any other logic for continuing to payment
   };
 
-  const Ex = ({ isAddress, onClickPay, addressType }: ExProps) => {
-    if (onClickPay) {
-      if (isAddress === false) {
-        // Display this message when the "Continue to payment" button is clicked and no address is provided
-        return (
-          <p className="m-0 text-danger">
-            Address not provided. Please provide your address details.
-          </p>
-        );
-      }
-    } else {
-      if (isAddress === true && addressType !== "Edit") {
-        // Display this message when there is an address but it's not selected
-        return (
-          <p className="m-0 text-danger">
-            Select your default address or add a new address.
-          </p>
-        );
-      }
-    }
-    return <p></p>;
-  };
-
-  const ref = useRef();
+  // const ref = useRef();
   return (
     <>
       <Row className="px-5 mt-3 mb-2 g-0">
@@ -165,7 +111,7 @@ const Address: React.FC = () => {
                     {/* <h6 className="mt-2 text-dark">Address -1</h6> */}
                     <p className="mb-2 text-justify">{userInfo?.name}</p>
                     <p className="m-0 text-justify">
-                      {userInfo?.address + " - " + userInfo?.pincode}
+                      {userInfo?.address + " - " + userInfo?.zipcode}
                     </p>
                     <p className="mb-2 text-justify">
                       {"(opp " + userInfo?.landmark + ")."}
@@ -178,16 +124,16 @@ const Address: React.FC = () => {
                         placement="top"
                         overlay={<Tooltip>Edit</Tooltip>}
                       > */}
-                        <BaseButton
-                          types="button"
-                          defaultClass="btn-icon"
-                          variant="outline"
-                          icon={faEdit}
-                          handleClick={() => {
-                            handleSelected("Edit");
-                            handleModal("Edit");
-                          }}
-                        />
+                      <BaseButton
+                        types="button"
+                        defaultClass="btn-icon"
+                        variant="outline"
+                        icon={faEdit}
+                        handleClick={() => {
+                          handleSelected("Edit");
+                          handleModal("Edit");
+                        }}
+                      />
                       {/* </OverlayTrigger> */}
 
                       <BaseButton
@@ -217,7 +163,6 @@ const Address: React.FC = () => {
               role="button"
             >
               <div>
-                {/* {addressType === "New" ? (selectedAddressType) : ()} */}
                 <div className="pt-5"></div>
                 <div className="ps-5 pe-5 pb-3 text-muted text-center">
                   <Image
@@ -237,22 +182,21 @@ const Address: React.FC = () => {
           </div>
           {selectedAddress === false ? (
             <div className="mt-2">
-              {/* {onClickPay && isAddress === false ? (
+              {onClickPay ? (
+                isAddress === false ? (
                   <p className="m-0 text-danger">
                     Address not provided. Please provide your address details.
                   </p>
-                ) : (
+                ) : selectedAddress === false ? (
                   <p className="m-0 text-danger">
                     Select your default address or add a new address.
                   </p>
-                )} */}
-              {
-                <Ex
-                  isAddress={isAddress}
-                  onClickPay={onClickPay}
-                  addressType={addressType}
-                />
-              }
+                ) : (
+                  <p></p>
+                )
+              ) : (
+                <p></p>
+              )}
             </div>
           ) : (
             <div></div>
@@ -308,7 +252,8 @@ const Address: React.FC = () => {
                   </Button>
                 </div>
               </div>
-              <div className="mt-3">
+              <div className="border border-1 my-3"></div>
+              <div>
                 <div className="d-flex justify-content-between">
                   <h6 className="text-muted">Subtotal</h6>
                   <p>$ 45.00</p>
