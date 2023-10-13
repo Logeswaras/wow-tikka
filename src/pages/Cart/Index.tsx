@@ -36,10 +36,11 @@ const Cart: React.FC = () => {
   const emptyCart = "emptyCart";
 
   const handleSignUp = () => {
-    setShowSignUp(true);
+    // setShowSignUp(true);
     // setTimeout(() => {
     //   navigate("/delivery");
     // }, 2000);
+    navigate("/delivery");
   };
 
   const handleClose = () => setShowSignUp(false);
